@@ -9,4 +9,3 @@ cache:
     - '$HOME/.npm'
 after_success:
   - npm run cov:send
-  - npm run cov:check
