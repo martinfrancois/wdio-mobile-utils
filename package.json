@@ -49,9 +49,7 @@
   "engines": {
     "node": ">= 10.0.0"
   },
-  "dependencies": {
-    "sha.js": "^2.4.11"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@bitjson/npm-scripts-info": "^1.0.0",
     "@bitjson/typedoc": "^0.15.0-0",
