@@ -1,6 +1,6 @@
 {
   "name": "wdio-mobile-utils",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "TODO",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
