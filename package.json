@@ -29,7 +29,8 @@
     "version": "standard-version",
     "reset": "git clean -dfx && git reset --hard && npm i",
     "clean": "trash build test",
-    "prepare-release": "run-s reset test doc:html version doc:publish"
+    "prepare-release": "run-s reset test doc:html version doc:publish",
+    "publish-release": "git push --follow-tags origin master && npm publish"
   },
   "scripts-info": {
     "info": "Display information about the package scripts",
@@ -42,7 +43,8 @@
     "doc:json": "Generate API documentation in typedoc JSON format",
     "version": "Bump package.json version, update CHANGELOG.md, tag release",
     "reset": "Delete all untracked files and reset the repo to the last commit",
-    "prepare-release": "One-step: clean, build, test, publish docs, and prep a release"
+    "prepare-release": "One-step: clean, build, test, publish docs, and prep a release",
+    "publish-release": "Run after prepare-release to push the release and publish the package on npm"
   },
   "engines": {
     "node": ">= 10.0.0"
