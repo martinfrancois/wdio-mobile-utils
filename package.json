@@ -26,7 +26,7 @@
     "doc:html": "typedoc src/ --exclude **/*.spec.ts --target ES6 --mode file --out build/docs",
     "doc:json": "typedoc src/ --exclude **/*.spec.ts --target ES6 --mode file --json build/docs/typedoc.json",
     "doc:publish": "gh-pages -m \"[ci skip] Updates\" -d build/docs",
-    "doc:publish:ci": "npm run doc:publish -- -r https://$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG.git -x",
+    "doc:publish:ci": "npm run doc:publish -- -r https://$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG.git",
     "version": "standard-version",
     "reset": "git clean -dfx && git reset --hard && npm i",
     "clean": "trash build test",
