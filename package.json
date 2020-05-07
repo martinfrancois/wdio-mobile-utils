@@ -30,7 +30,8 @@
     "reset": "git clean -dfx && git reset --hard && npm i",
     "clean": "trash build test",
     "prepare-release": "run-s reset test doc:html version doc:publish",
-    "publish-release": "git push --follow-tags origin master && npm publish"
+    "publish-release": "git push --follow-tags origin master && npm publish",
+    "release": "run-s prepare-release publish-release"
   },
   "scripts-info": {
     "info": "Display information about the package scripts",
@@ -44,7 +45,8 @@
     "version": "Bump package.json version, update CHANGELOG.md, tag release",
     "reset": "Delete all untracked files and reset the repo to the last commit",
     "prepare-release": "One-step: clean, build, test, publish docs, and prep a release",
-    "publish-release": "Run after prepare-release to push the release and publish the package on npm"
+    "publish-release": "Run after prepare-release to push the release and publish the package on npm",
+    "release": "Makes a new release from start to finish."
   },
   "engines": {
     "node": ">= 10.0.0"

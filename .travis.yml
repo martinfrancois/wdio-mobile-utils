@@ -9,3 +9,14 @@ cache:
     - '$HOME/.npm'
 after_success:
   - npm run cov:send
+deploy:
+  - provider: script
+    script: npm run release
+    skip_cleanup: true
+    on: &on
+      branch: master
+  - provider: releases
+    api_key: $GITHUB_TOKEN
+    name: Release $TRAVIS_TAG
+    body: See [CHANGELOG.md](https://github.com/$TRAVIS_REPO_SLUG/blob/master/CHANGELOG.md)
+    on: *on
