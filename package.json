@@ -28,11 +28,10 @@
     "doc:publish": "gh-pages -m \"[ci skip] Updates\" -d build/docs",
     "doc:publish:ci": "npm run doc:publish -- -r https://$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG.git -x",
     "version": "standard-version",
-    "version:ci": "standard-version --releaseCommitMessageFormat chore(release): {{currentTag}} [ci skip]",
     "reset": "git clean -dfx && git reset --hard && npm i",
     "clean": "trash build test",
     "prepare-release": "run-s reset test doc:html version doc:publish",
-    "prepare-release:ci": "run-s reset test doc:html version:ci doc:publish:ci",
+    "prepare-release:ci": "run-s reset test doc:html version doc:publish:ci",
     "publish-release": "git push --follow-tags origin master && npm publish",
     "publish-release:ci": "git push --follow-tags upstream master",
     "release": "run-s prepare-release publish-release",
@@ -89,6 +88,9 @@
   },
   "prettier": {
     "singleQuote": true
+  },
+  "standard-version": {
+    "releaseCommitMessageFormat": "chore(release): {{currentTag}} [ci skip]"
   },
   "husky": {
     "hooks": {
