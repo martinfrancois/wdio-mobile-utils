@@ -11,10 +11,14 @@ after_success:
   - npm run cov:send
 deploy:
   - provider: script
-    script: npm run release
+    script: .github/deploy_prepare.sh
     skip_cleanup: true
     on: &on
       branch: master
+  - provider: script
+    script: npm run release
+    skip_cleanup: true
+    on: *on
   - provider: releases
     api_key: $GITHUB_TOKEN
     name: Release $TRAVIS_TAG
