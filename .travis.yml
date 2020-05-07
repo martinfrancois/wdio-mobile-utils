@@ -19,6 +19,9 @@ deploy:
     script: npm run release:ci
     skip_cleanup: true
     on: *on
+  - provider: npm
+    email: $NPM_EMAIL
+    api_key: $NPM_AUTH_TOKEN
   - provider: releases
     api_key: $GITHUB_TOKEN
     name: Release $TRAVIS_TAG
