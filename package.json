@@ -33,7 +33,7 @@
     "prepare-release": "run-s reset test doc:html version doc:publish",
     "prepare-release:ci": "run-s reset test doc:html version doc:publish:ci",
     "publish-release": "git push --follow-tags origin master && npm publish",
-    "publish-release:ci": "git push --follow-tags origin master",
+    "publish-release:ci": "git push --follow-tags upstream master",
     "release": "run-s prepare-release publish-release",
     "release:ci": "run-s prepare-release:ci publish-release:ci"
   },
