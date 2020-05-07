@@ -16,7 +16,7 @@ deploy:
     on: &on
       branch: master
   - provider: script
-    script: npm run release
+    script: npm run release:ci
     skip_cleanup: true
     on: *on
   - provider: releases
