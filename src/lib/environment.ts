@@ -1,14 +1,15 @@
 /**
  * Returns whether the test is currently running on an iOS Simulator or not.
- *
- * iOS Simulators have a UDID in the format of XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
- * With X being a hexadecimal value.
  */
-export function isIosSimulator() {
+export function isIosSimulator(): boolean {
+    /**
+     *  iOS Simulators have a UDID in the format of XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+     *  With X being a hexadecimal value.
+     */
     const udid = browser.capabilities.udid;
     return (
         browser.isIOS &&
-        udid &&
+        !!udid &&
         udid.length === 36 &&
         udid.charAt(8) === '-' &&
         udid.charAt(13) === '-' &&
