@@ -80,7 +80,6 @@
 						<section class="tsd-index-section ">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable"><a href="globals.html#alert_open_selector" class="tsd-kind-icon">ALERT_<wbr>OPEN_<wbr>SELECTOR</a></li>
 								<li class="tsd-kind-variable"><a href="globals.html#chrome_app_id" class="tsd-kind-icon">CHROME_<wbr>APP_<wbr>ID</a></li>
 								<li class="tsd-kind-variable"><a href="globals.html#default_timeout" class="tsd-kind-icon">DEFAULT_<wbr>TIMEOUT</a></li>
 								<li class="tsd-kind-variable"><a href="globals.html#safari_bundle_id" class="tsd-kind-icon">SAFARI_<wbr>BUNDLE_<wbr>ID</a></li>
@@ -91,6 +90,7 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function"><a href="globals.html#_selectbase" class="tsd-kind-icon">_select<wbr>Base</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#acceptalert" class="tsd-kind-icon">accept<wbr>Alert</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#assertiddefined" class="tsd-kind-icon">assert<wbr>IdDefined</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#buildandroiduiselector" class="tsd-kind-icon">build<wbr>Android<wbr>UiSelector</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#buildiospredicate" class="tsd-kind-icon">build<wbr>Ios<wbr>Predicate</a></li>
@@ -101,6 +101,7 @@
 								<li class="tsd-kind-function"><a href="globals.html#getautomationtextofelement" class="tsd-kind-icon">get<wbr>Automation<wbr>Text<wbr>OfElement</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#getsafariurl" class="tsd-kind-icon">get<wbr>Safari<wbr>Url</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#isappstate" class="tsd-kind-icon">is<wbr>App<wbr>State</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#isappiumversionatleast1170" class="tsd-kind-icon">is<wbr>Appium<wbr>Version<wbr>AtLeast1170</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#isbrowserappstate" class="tsd-kind-icon">is<wbr>Browser<wbr>App<wbr>State</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#isiossimulator" class="tsd-kind-icon">is<wbr>Ios<wbr>Simulator</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#openapp" class="tsd-kind-icon">open<wbr>App</a></li>
@@ -132,22 +133,12 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Variables</h2>
 				<section class="tsd-panel tsd-member tsd-kind-variable">
-					<a name="alert_open_selector" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> ALERT_<wbr>OPEN_<wbr>SELECTOR</h3>
-					<div class="tsd-signature tsd-kind-icon">ALERT_<wbr>OPEN_<wbr>SELECTOR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"~Open"</span><span class="tsd-signature-symbol"> = &quot;~Open&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/deeplink.ts#L8">lib/deeplink.ts:8</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable">
 					<a name="chrome_app_id" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> CHROME_<wbr>APP_<wbr>ID</h3>
 					<div class="tsd-signature tsd-kind-icon">CHROME_<wbr>APP_<wbr>ID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"com.android.chrome"</span><span class="tsd-signature-symbol"> = &quot;com.android.chrome&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/constants.ts#L5">lib/constants.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/constants.ts#L5">lib/constants.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -157,7 +148,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>TIMEOUT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">60000</span><span class="tsd-signature-symbol"> = 60000</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/constants.ts#L1">lib/constants.ts:1</a></li>
+							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/constants.ts#L1">lib/constants.ts:1</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -167,7 +158,7 @@
 					<div class="tsd-signature tsd-kind-icon">SAFARI_<wbr>BUNDLE_<wbr>ID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"com.apple.mobilesafari"</span><span class="tsd-signature-symbol"> = &quot;com.apple.mobilesafari&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/constants.ts#L3">lib/constants.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/constants.ts#L3">lib/constants.ts:3</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -177,7 +168,7 @@
 					<div class="tsd-signature tsd-kind-icon">log<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = logger(&#x27;Deeplink&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/deeplink.ts#L10">lib/deeplink.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/deeplink.ts#L8">lib/deeplink.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -194,7 +185,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L157">lib/utils.ts:157</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L157">lib/utils.ts:157</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -222,6 +213,30 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="acceptalert" class="tsd-anchor"></a>
+					<h3>accept<wbr>Alert</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">accept<wbr>Alert<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/deeplink.ts#L26">lib/deeplink.ts:26</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns whether the current appium version is 1.17.0 or above.</p>
+								</div>
+								<p>Since some features are only available from Appium 1.17.0, this acts to determine whether a compatibility layer is
+								necessary or not.</p>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="assertiddefined" class="tsd-anchor"></a>
 					<h3>assert<wbr>IdDefined</h3>
 					<ul class="tsd-signatures tsd-kind-function">
@@ -231,7 +246,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/internal/utils.ts#L11">lib/internal/utils.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/internal/utils.ts#L11">lib/internal/utils.ts:11</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -268,7 +283,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L98">lib/utils.ts:98</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L98">lib/utils.ts:98</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -308,7 +323,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L122">lib/utils.ts:122</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L122">lib/utils.ts:122</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -354,7 +369,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L273">lib/utils.ts:273</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L273">lib/utils.ts:273</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -385,7 +400,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/number.ts#L22">lib/number.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/number.ts#L22">lib/number.ts:22</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -434,7 +449,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L186">lib/utils.ts:186</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L186">lib/utils.ts:186</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -465,7 +480,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L214">lib/utils.ts:214</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L214">lib/utils.ts:214</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -496,7 +511,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L146">lib/utils.ts:146</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L146">lib/utils.ts:146</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -526,7 +541,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L436">lib/utils.ts:436</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L436">lib/utils.ts:436</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -548,7 +563,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L368">lib/utils.ts:368</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L368">lib/utils.ts:368</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -588,6 +603,30 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="isappiumversionatleast1170" class="tsd-anchor"></a>
+					<h3>is<wbr>Appium<wbr>Version<wbr>AtLeast1170</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Appium<wbr>Version<wbr>AtLeast1170<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/deeplink.ts#L16">lib/deeplink.ts:16</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns whether the current appium version is 1.17.0 or above.</p>
+								</div>
+								<p>Since some features are only available from Appium 1.17.0, this acts to determine whether a compatibility layer is
+								necessary or not.</p>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="isbrowserappstate" class="tsd-anchor"></a>
 					<h3>is<wbr>Browser<wbr>App<wbr>State</h3>
 					<ul class="tsd-signatures tsd-kind-function">
@@ -597,7 +636,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L395">lib/utils.ts:395</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L395">lib/utils.ts:395</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -634,7 +673,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/environment.ts#L4">lib/environment.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/environment.ts#L4">lib/environment.ts:4</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -656,7 +695,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L447">lib/utils.ts:447</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L447">lib/utils.ts:447</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -699,13 +738,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/deeplink.ts#L64">lib/deeplink.ts:64</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/deeplink.ts#L94">lib/deeplink.ts:94</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Opens the app with the specified deeplink path routing to the view that should be shown.</p>
 								</div>
+								<p>When using Appium &lt;1.17.0 with iOS, it will only work with English system language.
+									Upgrade to Appium &gt;=1.17.0 for support of all locales on iOS.
+								Support for Appium &lt;1.17.0 will be dropped in the future.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -742,7 +784,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/deeplink.ts#L12">lib/deeplink.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/deeplink.ts#L40">lib/deeplink.ts:40</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -768,7 +810,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L426">lib/utils.ts:426</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L426">lib/utils.ts:426</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -790,7 +832,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/number.ts#L43">lib/number.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/number.ts#L43">lib/number.ts:43</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -833,7 +875,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L350">lib/utils.ts:350</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L350">lib/utils.ts:350</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -875,7 +917,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L81">lib/utils.ts:81</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L81">lib/utils.ts:81</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -905,7 +947,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L295">lib/utils.ts:295</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L295">lib/utils.ts:295</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -951,7 +993,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L205">lib/utils.ts:205</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L205">lib/utils.ts:205</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -994,7 +1036,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L233">lib/utils.ts:233</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L233">lib/utils.ts:233</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1037,7 +1079,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L336">lib/utils.ts:336</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L336">lib/utils.ts:336</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1080,7 +1122,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L264">lib/utils.ts:264</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L264">lib/utils.ts:264</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1123,7 +1165,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L314">lib/utils.ts:314</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L314">lib/utils.ts:314</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1154,7 +1196,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L242">lib/utils.ts:242</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L242">lib/utils.ts:242</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1185,7 +1227,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L411">lib/utils.ts:411</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L411">lib/utils.ts:411</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1215,7 +1257,7 @@
 					<div class="tsd-signature tsd-kind-icon">SELECTORS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L4">lib/utils.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L4">lib/utils.ts:4</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
@@ -1224,7 +1266,7 @@
 						<div class="tsd-signature tsd-kind-icon">ANDROID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L5">lib/utils.ts:5</a></li>
+								<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L5">lib/utils.ts:5</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1233,7 +1275,7 @@
 							<div class="tsd-signature tsd-kind-icon">UI_<wbr>SELECTOR_<wbr>PREFIX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;android&#x3D;new UiSelector()&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L6">lib/utils.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L6">lib/utils.ts:6</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1244,7 +1286,7 @@
 						<div class="tsd-signature tsd-kind-icon">IOS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L8">lib/utils.ts:8</a></li>
+								<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L8">lib/utils.ts:8</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1253,7 +1295,7 @@
 							<div class="tsd-signature tsd-kind-icon">PREDICATE_<wbr>PREFIX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;-ios predicate string:&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/9b52082/src/lib/utils.ts#L9">lib/utils.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/b12126f/src/lib/utils.ts#L9">lib/utils.ts:9</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1287,9 +1329,6 @@
 						<a href="enums/os.html" class="tsd-kind-icon">Os</a>
 					</li>
 					<li class=" tsd-kind-variable">
-						<a href="globals.html#alert_open_selector" class="tsd-kind-icon">ALERT_<wbr>OPEN_<wbr>SELECTOR</a>
-					</li>
-					<li class=" tsd-kind-variable">
 						<a href="globals.html#chrome_app_id" class="tsd-kind-icon">CHROME_<wbr>APP_<wbr>ID</a>
 					</li>
 					<li class=" tsd-kind-variable">
@@ -1303,6 +1342,9 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#_selectbase" class="tsd-kind-icon">_select<wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#acceptalert" class="tsd-kind-icon">accept<wbr>Alert</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#assertiddefined" class="tsd-kind-icon">assert<wbr>IdDefined</a>
@@ -1333,6 +1375,9 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#isappstate" class="tsd-kind-icon">is<wbr>App<wbr>State</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#isappiumversionatleast1170" class="tsd-kind-icon">is<wbr>Appium<wbr>Version<wbr>AtLeast1170</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#isbrowserappstate" class="tsd-kind-icon">is<wbr>Browser<wbr>App<wbr>State</a>
