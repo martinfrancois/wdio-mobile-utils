@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.1](https://github.com/martinfrancois/wdio-mobile-utils/compare/v3.1.0...v3.1.1) (2020-05-09)
+
+### Bug Fixes
+
+-   **deeplink:** implement backward compatibility layer differently to fix tests on Sauce Labs Virtual Cloud iOS Simulators ([476d7b3](https://github.com/martinfrancois/wdio-mobile-utils/commit/476d7b3532e2d58470899cb13b0313f146818248))
+
 ## [3.1.0](https://github.com/martinfrancois/wdio-mobile-utils/compare/v3.0.1...v3.1.0) (2020-05-09)
 
 ### Features
