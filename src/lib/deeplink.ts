@@ -8,29 +8,16 @@ import { assertIdDefined, Os } from './internal/utils';
 const log = logger('Deeplink');
 
 /**
- * Returns whether the current appium version is 1.17.0 or above.
- *
- * Since some features are only available from Appium 1.17.0, this acts to determine whether a compatibility layer is
- * necessary or not.
- */
-function isAppiumVersionAtLeast1170(): boolean {
-    return Number(browser.status().build.version.substr(0, 4)) >= 1.17;
-}
-
-/**
- * Returns whether the current appium version is 1.17.0 or above.
- *
- * Since some features are only available from Appium 1.17.0, this acts to determine whether a compatibility layer is
- * necessary or not.
+ * Accepts an alert in Safari which appears upon opening a deeplink.
  */
 function acceptAlert() {
-    if (isAppiumVersionAtLeast1170()) {
+    try {
         browser.execute('mobile: alert', { action: 'accept' });
-    } else {
+    } catch (e) {
         log.info(
             'Appium version is below 1.17.0, deeplink only works on English iOS devices! Support for Appium <1.17.0 will be dropped in the future.'
         );
-        // backwards compatibility layer to Appium versions lower than 1.17.0, only works for English iOS devices!
+        // accepting an alert on Safari was added in Appium 1.17.0, apply backward compatibility layer for older versions
         const openButton = $('~Open');
         openButton.waitForDisplayed(DEFAULT_TIMEOUT);
         openButton.click();
