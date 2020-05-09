@@ -2,7 +2,7 @@
 // @ts-ignore
 import logger from '@wdio/logger';
 import { DEFAULT_TIMEOUT, SAFARI_BUNDLE_ID } from './constants';
-import { isIosSimulator } from './Environment';
+import { isIosSimulator } from './environment';
 import { APP_RUNNING_STATE, isAppState, isBrowserAppState } from './utils';
 import { Context } from '../types/appium';
 import { assertIdDefined, Os } from './internal/utils';
