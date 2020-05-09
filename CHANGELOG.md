@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/martinfrancois/wdio-mobile-utils/compare/v3.0.0...v3.0.1) (2020-05-09)
+
+### Bug Fixes
+
+-   **deeplink:** remove context approach for real devices ([9b52082](https://github.com/martinfrancois/wdio-mobile-utils/commit/9b52082892db76e89b0bf7f840ebbfe1748fbcfc))
+
 ## [3.0.0](https://github.com/martinfrancois/wdio-mobile-utils/compare/v2.1.2...v3.0.0) (2020-05-09)
 
 ### ⚠ BREAKING CHANGES
