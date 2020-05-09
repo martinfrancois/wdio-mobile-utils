@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-// @ts-ignore
 import logger from '@wdio/logger';
 import { DEFAULT_TIMEOUT, SAFARI_BUNDLE_ID } from './constants';
 import { APP_RUNNING_STATE, isAppState, isBrowserAppState } from './utils';
