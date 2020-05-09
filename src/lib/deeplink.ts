@@ -6,9 +6,9 @@ import { assertIdDefined, Os } from './internal/utils';
 const log = logger('Deeplink');
 
 /**
- * Accepts an alert in Safari which appears upon opening a deeplink.
+ * Accepts an alert in Safari which appears upon opening a deeplink, tapping the "Open" button.
  */
-function acceptAlert() {
+function openDeeplinkAlert() {
     try {
         browser.execute('mobile: alert', { action: 'accept' });
     } catch (e) {
@@ -50,7 +50,7 @@ function openDeeplinkIos(deeplink: string, bundleId: string): void {
     // Submit the url and add a break
     urlField.setValue(deeplink + '\uE007');
 
-    acceptAlert();
+    openDeeplinkAlert();
 
     log.trace('Open button was clicked on Alert');
     if (isAppState(APP_RUNNING_STATE.FOREGROUND, true, undefined, bundleId)) {
