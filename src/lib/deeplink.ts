@@ -23,7 +23,7 @@ function openDeeplinkIos(deeplink: string, bundleId: string): void {
     isAppState(APP_RUNNING_STATE.NOT_RUNNING, true, undefined, bundleId);
 
     const urlButtonSelector =
-        "type == 'XCUIElementTypeButton' && name CONTAINS 'URL'";
+        "(type == 'XCUIElementTypeButton' || type == 'XCUIElementTypeTextField') && name CONTAINS 'URL'";
     const urlButton = $(`-ios predicate string:${urlButtonSelector}`);
 
     // Wait for the url button to appear and click on it so the text field will appear
