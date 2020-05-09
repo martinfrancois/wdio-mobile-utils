@@ -5,9 +5,37 @@ import { DEFAULT_TIMEOUT, SAFARI_BUNDLE_ID } from './constants';
 import { APP_RUNNING_STATE, isAppState, isBrowserAppState } from './utils';
 import { assertIdDefined, Os } from './internal/utils';
 
-const ALERT_OPEN_SELECTOR = '~Open';
-
 const log = logger('Deeplink');
+
+/**
+ * Returns whether the current appium version is 1.17.0 or above.
+ *
+ * Since some features are only available from Appium 1.17.0, this acts to determine whether a compatibility layer is
+ * necessary or not.
+ */
+function isAppiumVersionAtLeast1170(): boolean {
+    return Number(browser.status().build.version.substr(0, 4)) >= 1.17;
+}
+
+/**
+ * Returns whether the current appium version is 1.17.0 or above.
+ *
+ * Since some features are only available from Appium 1.17.0, this acts to determine whether a compatibility layer is
+ * necessary or not.
+ */
+function acceptAlert() {
+    if (isAppiumVersionAtLeast1170()) {
+        browser.execute('mobile: alert', { action: 'accept' });
+    } else {
+        log.info(
+            'Appium version is below 1.17.0, deeplink only works on English iOS devices! Support for Appium <1.17.0 will be dropped in the future.'
+        );
+        // backwards compatibility layer to Appium versions lower than 1.17.0, only works for English iOS devices!
+        const openButton = $('~Open');
+        openButton.waitForDisplayed(DEFAULT_TIMEOUT);
+        openButton.click();
+    }
+}
 
 function openDeeplinkIos(deeplink: string, bundleId: string): void {
     log.info('Opening Deeplink on iOS');
@@ -37,10 +65,8 @@ function openDeeplinkIos(deeplink: string, bundleId: string): void {
     // Submit the url and add a break
     urlField.setValue(deeplink + '\uE007');
 
-    const openButton = $(ALERT_OPEN_SELECTOR);
+    acceptAlert();
 
-    openButton.waitForDisplayed(DEFAULT_TIMEOUT);
-    openButton.click();
     log.trace('Open button was clicked on Alert');
     if (isAppState(APP_RUNNING_STATE.FOREGROUND, true, undefined, bundleId)) {
         log.info(
@@ -56,6 +82,10 @@ function openDeeplinkIos(deeplink: string, bundleId: string): void {
 
 /**
  * Opens the app with the specified deeplink path routing to the view that should be shown.
+ *
+ * When using Appium <1.17.0 with iOS, it will only work with English system language.
+ * Upgrade to Appium >=1.17.0 for support of all locales on iOS.
+ * Support for Appium <1.17.0 will be dropped in the future.
  *
  * @param {string} path to the deeplink.
  * @param {string} appId ID of the app (Android)
