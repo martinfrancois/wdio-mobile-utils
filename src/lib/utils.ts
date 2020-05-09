@@ -440,11 +440,11 @@ export function getSafariUrl(): WebdriverIO.Element {
 /**
  * Opens the app.
  *
+ * @param {boolean} wait whether or not the start of the app should be awaited
  * @param {string} appId ID of the app (Android)
  * @param {string} bundleId bundle id of the app (iOS)
- * @param {boolean} wait whether or not the start of the app should be awaited
  */
-export function openApp(appId?: string, bundleId?: string, wait = false) {
+export function openApp(wait = false, appId?: string, bundleId?: string) {
     browser.waitUntil(() => {
         if (browser.isAndroid) {
             browser.activateApp(appId);
