@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/martinfrancois/wdio-mobile-utils/compare/v2.1.2...v3.0.0) (2020-05-09)
+
+### ⚠ BREAKING CHANGES
+
+-   **utils:** For consistency, the order of parameters was changed to always include `appId` and `bundleId` last.
+
+To migrate, change all `openApp` calls to include the `wait` parameter as the first parameter, followed by `appId` and `bundleId`
+
+### Features
+
+-   **deeplink:** improve logging output for opening a deeplink in iOS Simulator ([bcf9f06](https://github.com/martinfrancois/wdio-mobile-utils/commit/bcf9f06fe90e8fc99e13738f798b03cb2d98abea))
+
+### Bug Fixes
+
+-   **deeplink:** errors of `bundleId` not being defined ([d532a66](https://github.com/martinfrancois/wdio-mobile-utils/commit/d532a66523046262cc54554363a137b9e9b1fa58))
+
+*   **utils:** change parameter order for `appId` and `bundleId` to be always last ([8e5b7cb](https://github.com/martinfrancois/wdio-mobile-utils/commit/8e5b7cb582ad1e8eee84bb7c9c8c9b642886a2f4))
+
 ### [2.1.2](https://github.com/martinfrancois/wdio-mobile-utils/compare/v2.1.1...v2.1.2) (2020-05-09)
 
 ### Bug Fixes
