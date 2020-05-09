@@ -451,6 +451,6 @@ export function openApp(appId?: string, bundleId?: string, wait = false) {
         } else {
             browser.execute('mobile: activateApp', { bundleId: bundleId });
         }
-        return isAppState(APP_RUNNING_STATE.FOREGROUND, wait);
+        return isAppState(APP_RUNNING_STATE.FOREGROUND, wait, appId, bundleId);
     });
 }

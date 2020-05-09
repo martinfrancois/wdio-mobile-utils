@@ -24,7 +24,7 @@ function openDeeplinkIosRealDevices(deeplink: string, bundleId: string): void {
 
     // terminate the app under test
     browser.execute('mobile: terminateApp', { bundleId: bundleId });
-    isAppState(APP_RUNNING_STATE.NOT_RUNNING, true);
+    isAppState(APP_RUNNING_STATE.NOT_RUNNING, true, undefined, bundleId);
 
     // find safari context
     browser.waitUntil(
@@ -106,7 +106,9 @@ function openDeeplinkIosRealDevices(deeplink: string, bundleId: string): void {
         // confirm opening the deeplink by clicking the "Open" button on the alert
         openButton.click();
         log.trace('Open button was clicked on Alert');
-        if (isAppState(APP_RUNNING_STATE.FOREGROUND, true)) {
+        if (
+            isAppState(APP_RUNNING_STATE.FOREGROUND, true, undefined, bundleId)
+        ) {
             log.info(
                 'App was opened successfully via deeplink and is running in the foreground'
             );
@@ -133,7 +135,7 @@ function openDeeplinkIosSimulators(deeplink: string, bundleId: string): void {
 
     // terminate the app under test
     browser.execute('mobile: terminateApp', { bundleId: bundleId });
-    isAppState(APP_RUNNING_STATE.NOT_RUNNING, true);
+    isAppState(APP_RUNNING_STATE.NOT_RUNNING, true, undefined, bundleId);
 
     const urlButtonSelector =
         "type == 'XCUIElementTypeButton' && name CONTAINS 'URL'";
@@ -155,7 +157,7 @@ function openDeeplinkIosSimulators(deeplink: string, bundleId: string): void {
     openButton.waitForDisplayed(DEFAULT_TIMEOUT);
     openButton.click();
     log.trace('Open button was clicked on Alert');
-    if (isAppState(APP_RUNNING_STATE.FOREGROUND, true)) {
+    if (isAppState(APP_RUNNING_STATE.FOREGROUND, true, undefined, bundleId)) {
         log.info(
             'App was opened successfully via deeplink and is running in the foreground'
         );
