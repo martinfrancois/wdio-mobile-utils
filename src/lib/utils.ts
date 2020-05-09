@@ -1,4 +1,5 @@
 import { CHROME_APP_ID, DEFAULT_TIMEOUT, SAFARI_BUNDLE_ID } from './constants';
+import { assertIdDefined, Os } from './internal/utils';
 
 const SELECTORS = {
     ANDROID: {
@@ -348,18 +349,10 @@ export function selectStartsWithAutomationText(
  */
 export function queryAppState(appId?: string, bundleId?: string) {
     if (browser.isIOS) {
-        if (!bundleId) {
-            throw new Error(
-                'queryAppState - No bundleId was specified for iOS'
-            );
-        }
+        assertIdDefined(bundleId, Os.IOS);
         return browser.execute('mobile: queryAppState', { bundleId: bundleId });
     } else {
-        if (!appId) {
-            throw new Error(
-                'queryAppState - No appId was specified for Android'
-            );
-        }
+        assertIdDefined(appId, Os.ANDROID);
         return browser.queryAppState(appId);
     }
 }
