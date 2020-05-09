@@ -127,6 +127,8 @@ function openDeeplinkIosRealDevices(deeplink: string, bundleId: string): void {
 }
 
 function openDeeplinkIosSimulators(deeplink: string, bundleId: string): void {
+    log.info('Opening Deeplink for iOS Simulators');
+
     log.trace('Launching Safari');
     browser.waitUntil(() => {
         browser.execute('mobile: launchApp', { bundleId: SAFARI_BUNDLE_ID });
