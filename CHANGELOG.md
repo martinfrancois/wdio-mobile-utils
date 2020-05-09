@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/martinfrancois/wdio-mobile-utils/compare/v3.0.1...v3.1.0) (2020-05-09)
+
+### Features
+
+-   **deeplink:** support iOS devices of any locale when using Appium >=1.17.0 ([b12126f](https://github.com/martinfrancois/wdio-mobile-utils/commit/b12126f98c7e81212312310de7b04f0da16687bd))
+
+### Bug Fixes
+
+-   **deeplink:** deeplink only finding `XCUIElementTypeTextField` but not `XCUIElementTypeButton` on iPhone Simulator ([27a097b](https://github.com/martinfrancois/wdio-mobile-utils/commit/27a097bef5ba85a05ef88bf7cd09e65a11759ce2))
+
 ### [3.0.1](https://github.com/martinfrancois/wdio-mobile-utils/compare/v3.0.0...v3.0.1) (2020-05-09)
 
 ### Bug Fixes
