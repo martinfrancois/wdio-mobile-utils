@@ -7,6 +7,7 @@ export enum Os {
  * Verifies the appId (Android) or bundleId (iOS) was defined or else throws an OS-specific error message.
  * @param id appId (Android) or bundleId (iOS)
  * @param os operating system under test
+ * @internal
  */
 export function assertIdDefined(id: string | undefined, os: Os) {
     if (!id) {
