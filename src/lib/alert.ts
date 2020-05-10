@@ -1,22 +1,35 @@
-import { selectEqualsType } from './utils';
+import {
+    ANDROID_UISELECTOR_PROPERTIES,
+    buildAndroidUiSelector,
+    selectEqualsType,
+} from './utils';
 
 const SELECTORS = {
     ANDROID: {
-        ALERT: '',
+        RESOURCE_ID: 'android:id/alertTitle',
     },
     IOS: {
-        ALERT: 'XCUIElementTypeAlert',
+        TYPE: 'XCUIElementTypeAlert',
     },
 };
+
+function getAndroidAlert(): WebdriverIO.Element {
+    return $(
+        buildAndroidUiSelector(
+            ANDROID_UISELECTOR_PROPERTIES.RESOURCE_ID,
+            SELECTORS.ANDROID.RESOURCE_ID
+        )
+    );
+}
 
 /**
  * Waits for a native alert to be shown.
  */
 export function waitForAlertDisplayed() {
     if (browser.isAndroid) {
-        throw new Error('Not implemented yet for Android!');
+        return getAndroidAlert().waitForDisplayed();
     } else {
-        return selectEqualsType(SELECTORS.IOS.ALERT, true);
+        return selectEqualsType(SELECTORS.IOS.TYPE, true);
     }
 }
 
@@ -25,9 +38,9 @@ export function waitForAlertDisplayed() {
  */
 export function isAlertDisplayed() {
     if (browser.isAndroid) {
-        throw new Error('Not implemented yet for Android!');
+        return getAndroidAlert().isDisplayed();
     } else {
-        return selectEqualsType(SELECTORS.IOS.ALERT, false);
+        return selectEqualsType(SELECTORS.IOS.TYPE, false);
     }
 }
 

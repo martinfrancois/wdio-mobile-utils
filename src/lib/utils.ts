@@ -11,7 +11,7 @@ const SELECTORS = {
 };
 
 // see https://developer.android.com/reference/android/support/test/uiautomator/UiSelector.html
-enum ANDROID_UISELECTOR_PROPERTIES {
+export enum ANDROID_UISELECTOR_PROPERTIES {
     CHECKABLE = 'checkable',
     CHECKED = 'checked',
     CLASS_NAME = 'className',
@@ -41,7 +41,7 @@ enum ANDROID_UISELECTOR_PROPERTIES {
 }
 
 // see https://github.com/facebookarchive/WebDriverAgent/wiki/Predicate-Queries-Construction-Rules
-enum IOS_PREDICATE_ATTRIBUTES {
+export enum IOS_PREDICATE_ATTRIBUTES {
     NAME = 'name',
     VALUE = 'value',
     LABEL = 'label',
@@ -95,7 +95,7 @@ export function removeStartingTilde(key: string) {
  * @param property in the example being: {@code text}
  * @param argument in the example being: {@code Text to search for}
  */
-function buildAndroidUiSelector(
+export function buildAndroidUiSelector(
     property: ANDROID_UISELECTOR_PROPERTIES,
     argument: string
 ) {
@@ -119,7 +119,7 @@ function buildAndroidUiSelector(
  * @param comparator     in the example being: {@code ==}
  * @param argument       in the example being: {@code Text to search for}
  */
-function buildIosPredicate(
+export function buildIosPredicate(
     attribute: IOS_PREDICATE_ATTRIBUTES,
     comparator: IOS_PREDICATE_COMPARATOR,
     argument: string
