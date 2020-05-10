@@ -18,3 +18,13 @@ export function assertIdDefined(id: string | undefined, os: Os) {
         }
     }
 }
+
+/**
+ * Checks whether the supplied argument is of type string or not.
+ * @param maybeString argument to check if it's a string
+ * @returns true if it's a string, false in all other cases
+ * @internal
+ */
+export function isString<T>(maybeString: T): boolean {
+    return typeof maybeString === 'string';
+}
