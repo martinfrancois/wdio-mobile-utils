@@ -14,15 +14,15 @@ export class Selector {
         this.androidSelector = androidSelector;
         this.iosSelector = iosSelector;
     }
-    /*
-    public static and(selector1: Selector, selector2: Selector): Selector {
+
+    /* public static and(selector1: Selector, selector2: Selector): Selector {
         return new Selector('', '');
     }
 
     public static or(selector1: Selector, selector2: Selector): Selector {
         return new Selector('', '');
-    }
-
+    }*/
+    /*
     public static type(type: Type): Selector {
         return new Selector('', '');
     }
@@ -38,20 +38,60 @@ export class Selector {
     }
     public static textStartsWith(text: string): Selector {
         return new Selector('', '');
-    }
+    }*/
 
     public static accessibilityId(accessibilityId: string): Selector {
-        return new Selector('', '');
+        return this.custom(
+            AndroidSelector.android(
+                ANDROID_UISELECTOR_PROPERTIES.DESCRIPTION,
+                accessibilityId
+            ),
+            IosSelector.ios(
+                IOS_PREDICATE_ATTRIBUTES.NAME,
+                IOS_PREDICATE_COMPARATOR.EQUALS,
+                accessibilityId
+            )
+        );
     }
     public static accessibilityIdContains(accessibilityId: string): Selector {
-        return new Selector('', '');
+        return this.custom(
+            AndroidSelector.android(
+                ANDROID_UISELECTOR_PROPERTIES.DESCRIPTION_CONTAINS,
+                accessibilityId
+            ),
+            IosSelector.ios(
+                IOS_PREDICATE_ATTRIBUTES.NAME,
+                IOS_PREDICATE_COMPARATOR.CONTAINS,
+                accessibilityId
+            )
+        );
     }
     public static accessibilityIdMatches(accessibilityId: string): Selector {
-        return new Selector('', '');
+        return this.custom(
+            AndroidSelector.android(
+                ANDROID_UISELECTOR_PROPERTIES.DESCRIPTION_MATCHES,
+                accessibilityId
+            ),
+            IosSelector.ios(
+                IOS_PREDICATE_ATTRIBUTES.NAME,
+                IOS_PREDICATE_COMPARATOR.MATCHES,
+                accessibilityId
+            )
+        );
     }
     public static accessibilityIdStartsWith(accessibilityId: string): Selector {
-        return new Selector('', '');
-    }*/
+        return this.custom(
+            AndroidSelector.android(
+                ANDROID_UISELECTOR_PROPERTIES.DESCRIPTION_STARTS_WITH,
+                accessibilityId
+            ),
+            IosSelector.ios(
+                IOS_PREDICATE_ATTRIBUTES.NAME,
+                IOS_PREDICATE_COMPARATOR.BEGINS_WITH,
+                accessibilityId
+            )
+        );
+    }
 
     public static enabled(): Selector {
         return this.custom(
