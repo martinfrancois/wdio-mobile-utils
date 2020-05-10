@@ -25,22 +25,30 @@ function getAndroidAlert(): WebdriverIO.Element {
 /**
  * Waits for a native alert to be shown.
  */
-export function waitForAlertDisplayed() {
+export function waitForAlertDisplayed(): WebdriverIO.Element {
     if (browser.isAndroid) {
-        return getAndroidAlert().waitForDisplayed();
+        const element = getAndroidAlert();
+        element.waitForDisplayed();
+        return element;
     } else {
-        return selectEqualsType(SELECTORS.IOS.TYPE, true);
+        return selectEqualsType(
+            SELECTORS.IOS.TYPE,
+            true
+        ) as WebdriverIO.Element;
     }
 }
 
 /**
  * Returns whether or not a native alert is shown.
  */
-export function isAlertDisplayed() {
+export function isAlertDisplayed(): boolean {
     if (browser.isAndroid) {
         return getAndroidAlert().isDisplayed();
     } else {
-        return selectEqualsType(SELECTORS.IOS.TYPE, false);
+        return (selectEqualsType(
+            SELECTORS.IOS.TYPE,
+            false
+        ) as WebdriverIO.Element).isDisplayed();
     }
 }
 
@@ -48,9 +56,9 @@ export function isAlertDisplayed() {
  * Accepts the alert in a cross-platform way.
  * For example, this would press the "OK" or "Yes" button.
  */
-export function acceptAlert() {
+export function acceptAlert(): void {
     if (browser.isAndroid) {
-        throw new Error('Not implemented yet for Android!');
+        browser.execute('mobile: acceptAlert');
     } else {
         // NOTE: using the button name as accessibility identifier does NOT work!
         // iOS Gestures are being used here:
@@ -63,9 +71,9 @@ export function acceptAlert() {
  * Dismisses the alert in a cross-platform way.
  * For example, this would press the "Close", "Cancel" or "No" button.
  */
-export function dismissAlert() {
+export function dismissAlert(): void {
     if (browser.isAndroid) {
-        throw new Error('Not implemented yet for Android!');
+        browser.execute('mobile: dismissAlert');
     } else {
         // NOTE: using the button name as accessibility identifier does NOT work!
         // iOS Gestures are being used here:
