@@ -68,10 +68,9 @@ function openDeeplinkIos(deeplink: string, bundleId: string): void {
 /**
  * Opens the app with the specified deeplink path routing to the view that should be shown.
  *
- * When using Appium <1.17.0 with iOS, it will only work with English system language.
+ * @note When using Appium <1.17.0 with iOS, it will only work with English system language.
  * Upgrade to Appium >=1.17.0 for support of all locales on iOS.
  * Support for Appium <1.17.0 will be dropped in the future.
- *
  * @param {string} path to the deeplink.
  * @param {string} appId ID of the app (Android)
  * @param {string} bundleId bundle id of the app (iOS)
