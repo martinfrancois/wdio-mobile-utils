@@ -4,6 +4,54 @@ import { Type } from './type';
 describe('Selector', function () {
     const VALUE = 'TEST VALUE';
 
+    describe('combination selectors', function () {
+        const s1 = Selector.type(Type.TEXT_FIELD);
+        const s2 = Selector.text(VALUE);
+        const s3 = Selector.type(Type.BUTTON);
+
+        describe('and', function () {
+            const combined = Selector.and(s1, s2);
+
+            it('should return the selector for Android when ".android()" is called', function () {
+                // TODO: expect(combined.android()).toBe(`.text("${VALUE}")`);
+            });
+
+            it('should return the selector for iOS when ".ios()" is called', function () {
+                expect(combined.ios()).toBe(
+                    `(type == 'XCUIElementTypeTextField' && label == '${VALUE}')`
+                );
+            });
+        });
+
+        describe('or', function () {
+            const combined = Selector.or(s1, s2);
+
+            it('should return the selector for Android when ".android()" is called', function () {
+                // TODO: expect(combined.android()).toBe(`.text("${VALUE}")`);
+            });
+
+            it('should return the selector for iOS when ".ios()" is called', function () {
+                expect(combined.ios()).toBe(
+                    `(type == 'XCUIElementTypeTextField' || label == '${VALUE}')`
+                );
+            });
+        });
+
+        describe('and & or', function () {
+            const combined = Selector.and(Selector.or(s1, s3), s2);
+
+            it('should return the selector for Android when ".android()" is called', function () {
+                // TODO: expect(combined.android()).toBe(`.text("${VALUE}")`);
+            });
+
+            it('should return the selector for iOS when ".ios()" is called', function () {
+                expect(combined.ios()).toBe(
+                    `((type == 'XCUIElementTypeTextField' || type == 'XCUIElementTypeButton') && label == '${VALUE}')`
+                );
+            });
+        });
+    });
+
     describe('type', function () {
         it.each`
             type               | androidClassName             | iosType

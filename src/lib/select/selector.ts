@@ -16,13 +16,17 @@ export class Selector {
         this.iosSelector = iosSelector;
     }
 
-    /* public static and(selector1: Selector, selector2: Selector): Selector {
-        return new Selector('', '');
+    public static and(selector1: Selector, selector2: Selector): Selector {
+        const andAndroid = ''; // TODO implement
+        const andIos = '(' + selector1.ios() + ' && ' + selector2.ios() + ')';
+        return new Selector(andAndroid, andIos);
     }
 
     public static or(selector1: Selector, selector2: Selector): Selector {
-        return new Selector('', '');
-    }*/
+        const andAndroid = ''; // TODO implement
+        const andIos = '(' + selector1.ios() + ' || ' + selector2.ios() + ')';
+        return new Selector(andAndroid, andIos);
+    }
 
     public static type(type: Type): Selector {
         let androidClassName;
