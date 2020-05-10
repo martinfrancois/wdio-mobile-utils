@@ -10,7 +10,7 @@ const SELECTORS = {
     },
 };
 
-// see https://developer.android.com/reference/android/support/test/uiautomator/UiSelector.html
+// see https://developer.android.com/reference/androidx/test/uiautomator/UiSelector
 export enum ANDROID_UISELECTOR_PROPERTIES {
     CHECKABLE = 'checkable',
     CHECKED = 'checked',
