@@ -8,6 +8,7 @@ describe('Selector', function () {
         const s1 = Selector.type(Type.TEXT_FIELD);
         const s2 = Selector.text(VALUE);
         const s3 = Selector.type(Type.BUTTON);
+        const s4 = Selector.enabled();
 
         describe('and', function () {
             const combined = Selector.and(s1, s2);
@@ -29,7 +30,9 @@ describe('Selector', function () {
             const combined = Selector.or(s1, s2);
 
             it('should return the selector for Android when ".android()" is called', function () {
-                // TODO: expect(combined.android()).toBe(`.text("${VALUE}")`);
+                expect(combined.android()).toBe(
+                    `.className("android.widget.EditText");new UiSelector().text("${VALUE}")`
+                );
             });
 
             it('should return the selector for iOS when ".ios()" is called', function () {
@@ -55,6 +58,65 @@ describe('Selector', function () {
             it('should return the selector for iOS when ".ios()" is called', function () {
                 expect(combined.ios()).toBe(
                     `((type == 'XCUIElementTypeTextField' || type == 'XCUIElementTypeButton') && label == '${VALUE}')`
+                );
+            });
+        });
+
+        describe('or & and', function () {
+            const combined = Selector.or(Selector.and(s1, s3), s2);
+
+            it('should return the selector for Android when ".android()" is called', function () {
+                expect(combined.android()).toBe(
+                    `.className("android.widget.EditText").className("android.widget.Button");new UiSelector().text("${VALUE}")`
+                );
+            });
+
+            it('should return the selector for iOS when ".ios()" is called', function () {
+                expect(combined.ios()).toBe(
+                    `((type == 'XCUIElementTypeTextField' && type == 'XCUIElementTypeButton') || label == '${VALUE}')`
+                );
+            });
+        });
+
+        describe('combinations edge cases for Android', function () {
+            /**
+             * s2 && (s1 || s3)
+             * is equivalent to
+             * (s2 && s1) || (s2 && s3)
+             */
+            it('s2 && (s1 || s3) => (s2 && s1) || (s2 && s3)', function () {
+                const combined = Selector.and(s2, Selector.or(s1, s3));
+                expect(combined.android()).toBe(
+                    `.text("${VALUE}").className("android.widget.EditText");new UiSelector().text("${VALUE}").className("android.widget.Button")`
+                );
+            });
+
+            /**
+             *  (s1 || s2) && (s3 || s4)
+             * is equivalent to
+             * (s1 && s3) || (s1 && s4) || (s2 && s3) || (s2 && s4)
+             */
+            it('(s1 || s2) && (s3 || s4) => (s1 && s3) || (s1 && s4) || (s2 && s3) || (s2 && s4)', function () {
+                const combined = Selector.and(
+                    Selector.or(s1, s2),
+                    Selector.or(s3, s4)
+                );
+                expect(combined.android()).toBe(
+                    '.className("android.widget.EditText").className("android.widget.Button");' + // (s1 && s3) ||
+                    'new UiSelector().className("android.widget.EditText").enabled(true);' + // (s1 && s4) ||
+                    `new UiSelector().text("${VALUE}").className("android.widget.Button");` + // (s2 && s3) ||
+                        `new UiSelector().text("${VALUE}").enabled(true)` // (s2 && s4)
+                );
+            });
+
+            it('(s1 && s2) || (s3 && s4)', function () {
+                const combined = Selector.or(
+                    Selector.and(s1, s2),
+                    Selector.and(s3, s4)
+                );
+                expect(combined.android()).toBe(
+                    `.className("android.widget.EditText").text("${VALUE}");` + // (s1 && s2) ||
+                        'new UiSelector().className("android.widget.Button").enabled(true)' // (s3 && s4)
                 );
             });
         });
