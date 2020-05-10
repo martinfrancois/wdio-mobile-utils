@@ -2,6 +2,7 @@ import logger from '@wdio/logger';
 import { DEFAULT_TIMEOUT, SAFARI_BUNDLE_ID } from './constants';
 import { APP_RUNNING_STATE, isAppState, isBrowserAppState } from './utils';
 import { assertIdDefined, Os } from './internal/utils';
+import { acceptAlert } from './alert';
 
 const log = logger('Deeplink');
 
@@ -10,7 +11,7 @@ const log = logger('Deeplink');
  */
 function openDeeplinkAlert() {
     try {
-        browser.execute('mobile: alert', { action: 'accept' });
+        acceptAlert();
     } catch (e) {
         log.info(
             'Appium version is below 1.17.0, deeplink only works on English iOS devices! Support for Appium <1.17.0 will be dropped in the future.'
