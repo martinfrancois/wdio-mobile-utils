@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/martinfrancois/wdio-mobile-utils/compare/v3.1.3...v3.2.0) (2020-05-10)
+
+### Features
+
+-   **alert:** add utility functions ([6d6c93d](https://github.com/martinfrancois/wdio-mobile-utils/commit/6d6c93d0b332895727932a89fbb68a0d30f7c5b8))
+-   **alert:** add visibility check for android ([ba129f4](https://github.com/martinfrancois/wdio-mobile-utils/commit/ba129f4563ed545f4fcc8f8e735e76e80c4e792e))
+
 ### [3.1.3](https://github.com/martinfrancois/wdio-mobile-utils/compare/v3.1.2...v3.1.3) (2020-05-10)
 
 ### [3.1.2](https://github.com/martinfrancois/wdio-mobile-utils/compare/v3.1.1...v3.1.2) (2020-05-10)
