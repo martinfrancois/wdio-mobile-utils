@@ -5,6 +5,7 @@ import {
 } from '../utils';
 import { AndroidSelector } from './androidSelector';
 import { IosSelector } from './iosSelector';
+import { Type } from './type';
 
 export class Selector {
     private androidSelector: string;
@@ -22,9 +23,40 @@ export class Selector {
     public static or(selector1: Selector, selector2: Selector): Selector {
         return new Selector('', '');
     }*/
-    /*   public static type(type: Type): Selector {
-        return new Selector('', '');
-    }*/
+
+    public static type(type: Type): Selector {
+        let androidClassName;
+        let iosType;
+
+        switch (type) {
+            case Type.LABEL:
+                androidClassName = 'android.widget.TextView';
+                iosType = 'XCUIElementTypeStaticText';
+                break;
+            case Type.BUTTON:
+                androidClassName = 'android.widget.Button';
+                iosType = 'XCUIElementTypeButton';
+                break;
+            case Type.TEXT_FIELD:
+                androidClassName = 'android.widget.EditText';
+                iosType = 'XCUIElementTypeTextField';
+                break;
+            default:
+                throw new Error('Type not implemented!');
+        }
+
+        return this.custom(
+            AndroidSelector.android(
+                ANDROID_UISELECTOR_PROPERTIES.CLASS_NAME,
+                androidClassName
+            ),
+            IosSelector.ios(
+                IOS_PREDICATE_ATTRIBUTES.TYPE,
+                IOS_PREDICATE_COMPARATOR.EQUALS,
+                iosType
+            )
+        );
+    }
 
     public static text(text: string): Selector {
         return this.custom(

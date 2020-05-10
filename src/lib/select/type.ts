@@ -1,4 +1,5 @@
 export enum Type {
-    TEXT_FIELD = 'TEXT_FIELD',
+    LABEL = 'LABEL',
     BUTTON = 'BUTTON',
+    TEXT_FIELD = 'TEXT_FIELD',
 }

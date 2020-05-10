@@ -1,7 +1,34 @@
 import { Selector } from './selector';
+import { Type } from './type';
 
 describe('Selector', function () {
     const VALUE = 'TEST VALUE';
+
+    describe('type', function () {
+        it.each`
+            type               | androidClassName             | iosType
+            ${Type.LABEL}      | ${'android.widget.TextView'} | ${'XCUIElementTypeStaticText'}
+            ${Type.BUTTON}     | ${'android.widget.Button'}   | ${'XCUIElementTypeButton'}
+            ${Type.TEXT_FIELD} | ${'android.widget.EditText'} | ${'XCUIElementTypeTextField'}
+        `(
+            'should return type selector with className "$androidClassName" for Android and type "$iosType" for iOS for enum type "$type"',
+            ({ type, androidClassName, iosType }) => {
+                const selector = Selector.type(type);
+                expect(selector.android()).toBe(
+                    `.className("${androidClassName}")`
+                );
+                expect(selector.ios()).toBe(`type == '${iosType}'`);
+            }
+        );
+
+        it('should throw an exception if the type is not implemented', function () {
+            expect(() =>
+                // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+                // @ts-ignore to force a non-existing type
+                Selector.type('awdawjife434637863787h8tefwef')
+            ).toThrowError('Type not implemented!');
+        });
+    });
 
     describe('text', function () {
         const selector = Selector.text(VALUE);
