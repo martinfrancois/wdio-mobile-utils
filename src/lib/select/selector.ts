@@ -22,23 +22,59 @@ export class Selector {
     public static or(selector1: Selector, selector2: Selector): Selector {
         return new Selector('', '');
     }*/
-    /*
-    public static type(type: Type): Selector {
-        return new Selector('', '');
-    }
-
-    public static text(text: string): Selector {
-        return new Selector('', '');
-    }
-    public static textContains(text: string): Selector {
-        return new Selector('', '');
-    }
-    public static textMatches(text: string): Selector {
-        return new Selector('', '');
-    }
-    public static textStartsWith(text: string): Selector {
+    /*   public static type(type: Type): Selector {
         return new Selector('', '');
     }*/
+
+    public static text(text: string): Selector {
+        return this.custom(
+            AndroidSelector.android(ANDROID_UISELECTOR_PROPERTIES.TEXT, text),
+            IosSelector.ios(
+                IOS_PREDICATE_ATTRIBUTES.LABEL,
+                IOS_PREDICATE_COMPARATOR.EQUALS,
+                text
+            )
+        );
+    }
+    public static textContains(text: string): Selector {
+        return this.custom(
+            AndroidSelector.android(
+                ANDROID_UISELECTOR_PROPERTIES.TEXT_CONTAINS,
+                text
+            ),
+            IosSelector.ios(
+                IOS_PREDICATE_ATTRIBUTES.LABEL,
+                IOS_PREDICATE_COMPARATOR.CONTAINS,
+                text
+            )
+        );
+    }
+    public static textMatches(text: string): Selector {
+        return this.custom(
+            AndroidSelector.android(
+                ANDROID_UISELECTOR_PROPERTIES.TEXT_MATCHES,
+                text
+            ),
+            IosSelector.ios(
+                IOS_PREDICATE_ATTRIBUTES.LABEL,
+                IOS_PREDICATE_COMPARATOR.MATCHES,
+                text
+            )
+        );
+    }
+    public static textStartsWith(text: string): Selector {
+        return this.custom(
+            AndroidSelector.android(
+                ANDROID_UISELECTOR_PROPERTIES.TEXT_STARTS_WITH,
+                text
+            ),
+            IosSelector.ios(
+                IOS_PREDICATE_ATTRIBUTES.LABEL,
+                IOS_PREDICATE_COMPARATOR.BEGINS_WITH,
+                text
+            )
+        );
+    }
 
     public static accessibilityId(accessibilityId: string): Selector {
         return this.custom(
@@ -106,7 +142,6 @@ export class Selector {
             )
         );
     }
-
     public static disabled(): Selector {
         return this.custom(
             AndroidSelector.android(
