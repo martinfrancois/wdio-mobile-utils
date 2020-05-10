@@ -54,7 +54,7 @@ export enum IOS_PREDICATE_ATTRIBUTES {
 }
 
 // see https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Predicates/Articles/pSyntax.html
-enum IOS_PREDICATE_COMPARATOR {
+export enum IOS_PREDICATE_COMPARATOR {
     EQUALS = '==',
     NOT_EQUALS = '!=',
     CONTAINS = 'CONTAINS',
