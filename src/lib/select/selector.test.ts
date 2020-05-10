@@ -13,7 +13,9 @@ describe('Selector', function () {
             const combined = Selector.and(s1, s2);
 
             it('should return the selector for Android when ".android()" is called', function () {
-                // TODO: expect(combined.android()).toBe(`.text("${VALUE}")`);
+                expect(combined.android()).toBe(
+                    `.className("android.widget.EditText").text("${VALUE}")`
+                );
             });
 
             it('should return the selector for iOS when ".ios()" is called', function () {
@@ -39,9 +41,15 @@ describe('Selector', function () {
 
         describe('and & or', function () {
             const combined = Selector.and(Selector.or(s1, s3), s2);
-
+            /**
+             * (s1 || s3) && s2
+             * is equivalent to
+             * (s1 && s2) || (s3 && s2)
+             */
             it('should return the selector for Android when ".android()" is called', function () {
-                // TODO: expect(combined.android()).toBe(`.text("${VALUE}")`);
+                expect(combined.android()).toBe(
+                    `.className("android.widget.EditText").text("${VALUE}");new UiSelector().className("android.widget.Button").text("${VALUE}")`
+                );
             });
 
             it('should return the selector for iOS when ".ios()" is called', function () {
