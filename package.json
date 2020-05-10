@@ -92,5 +92,6 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
-  }
+  },
+  "types": "main/index.d.ts"
 }
