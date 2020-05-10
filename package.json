@@ -93,5 +93,5 @@
       "pre-commit": "pretty-quick --staged"
     }
   },
-  "types": "main/index.d.ts"
+  "types": "build/main/index.d.ts"
 }
