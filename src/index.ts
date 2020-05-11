@@ -3,6 +3,7 @@ export * from './lib/utils';
 export * from './lib/deeplink';
 export * from './lib/alert';
 export * from './lib/appUtils';
+export * from './lib/gestures';
 export * from './lib/select/androidSelector';
 export * from './lib/select/iosSelector';
 export * from './lib/select/selector';
