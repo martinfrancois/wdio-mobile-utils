@@ -59,11 +59,21 @@ function openDeeplinkIos(deeplink: string, bundleId: string): void {
             'App was opened successfully via deeplink and is running in the foreground'
         );
     } else {
+        // TODO: is this executed?
         const message =
             'Could not find an open button for deeplink: ' + deeplink;
         log.error(message);
         throw new Error(message);
     }
+}
+
+function openDeeplinkAndroid(path: string, appId: string) {
+    log.info('Opening Deeplink on Android');
+    browser.closeApp();
+    browser.execute('mobile: deepLink', {
+        url: path,
+        package: appId,
+    });
 }
 
 /**
@@ -87,11 +97,6 @@ export function openDeeplink(
         openDeeplinkIos(path, bundleId as string);
     } else {
         assertIdDefined(appId, Os.ANDROID);
-        log.info('Opening Deeplink on Android');
-        browser.closeApp();
-        browser.execute('mobile: deepLink', {
-            url: path,
-            package: appId,
-        });
+        openDeeplinkAndroid(path, appId as string);
     }
 }
