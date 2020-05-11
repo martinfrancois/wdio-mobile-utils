@@ -41,12 +41,11 @@ function openDeeplinkIos(deeplink: string, bundleId: string): void {
     browser.execute('mobile: terminateApp', { bundleId: bundleId });
     isAppState(APP_RUNNING_STATE.NOT_RUNNING, true, undefined, bundleId);
 
-    // TODO: can it be "equals"?
     const nameContainsUrl = Selector.custom(
         null,
         IosSelector.of(
             IOS_PREDICATE_ATTRIBUTES.NAME,
-            IOS_PREDICATE_COMPARATOR.CONTAINS,
+            IOS_PREDICATE_COMPARATOR.EQUALS,
             'URL'
         )
     );
