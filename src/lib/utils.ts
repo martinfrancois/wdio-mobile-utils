@@ -1,7 +1,7 @@
 /**
  * Removes, if present, the ~ character in the beginning of a string.
- * This is useful in cases where the automationText can be passed in by the developer, but needs to be without a ~ in front. This makes
- * sure even if the automationText contains a ~ that is not allowed, that it's properly removed, providing greater convenience.
+ * This is useful in cases where the accessibilityId can be passed in by the developer, but needs to be without a ~ in front. This makes
+ * sure even if the accessibilityId contains a ~ that is not allowed, that it's properly removed, providing greater convenience.
  */
 export function removeStartingTilde(key: string): string {
     if (key.startsWith('~')) {
