@@ -1,8 +1,8 @@
 import logger from '@wdio/logger';
-import { DEFAULT_TIMEOUT, SAFARI_BUNDLE_ID } from './constants';
+import { DEFAULT_TIMEOUT } from './constants';
 import { assertIdDefined, Os } from './internal/utils';
 import { acceptAlert } from './alert';
-import { APP_RUNNING_STATE, isAppState, isBrowserAppState } from './appUtils';
+import { APP_RUNNING_STATE, isAppState, openSafari } from './appUtils';
 
 const log = logger('Deeplink');
 
@@ -27,10 +27,7 @@ function openDeeplinkIos(deeplink: string, bundleId: string): void {
     log.info('Opening Deeplink on iOS');
 
     log.trace('Launching Safari');
-    browser.waitUntil(() => {
-        browser.execute('mobile: launchApp', { bundleId: SAFARI_BUNDLE_ID });
-        return isBrowserAppState(APP_RUNNING_STATE.FOREGROUND, false);
-    });
+    openSafari();
 
     // terminate the app under test
     browser.execute('mobile: terminateApp', { bundleId: bundleId });
