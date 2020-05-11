@@ -1,6 +1,6 @@
 // see http://appium.io/docs/en/commands/device/app/app-state/
 import { CHROME_APP_ID, DEFAULT_TIMEOUT, SAFARI_BUNDLE_ID } from './constants';
-import { assertIdDefined, Os } from './internal/utils';
+import { assertIdDefined, Platform } from './internal/utils';
 
 export enum APP_RUNNING_STATE {
     NOT_INSTALLED = 0,
@@ -22,10 +22,10 @@ export function queryAppState(
     bundleId?: string
 ): APP_RUNNING_STATE {
     if (browser.isIOS) {
-        assertIdDefined(bundleId, Os.IOS);
+        assertIdDefined(bundleId, Platform.IOS);
         return browser.execute('mobile: queryAppState', { bundleId: bundleId });
     } else {
-        assertIdDefined(appId, Os.ANDROID);
+        assertIdDefined(appId, Platform.ANDROID);
         return browser.queryAppState(appId);
     }
 }

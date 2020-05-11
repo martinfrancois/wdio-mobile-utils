@@ -1,6 +1,6 @@
 import logger from '@wdio/logger';
 import { DEFAULT_TIMEOUT } from './constants';
-import { assertIdDefined, Os } from './internal/utils';
+import { assertIdDefined, Platform } from './internal/utils';
 import { acceptAlert } from './alert';
 import { APP_RUNNING_STATE, isAppState, openSafari } from './appUtils';
 import { mobile$ } from './select/select';
@@ -132,10 +132,10 @@ export function openDeeplink(
 ): void {
     log.trace('openDeeplink: ' + path);
     if (browser.isIOS) {
-        assertIdDefined(bundleId, Os.IOS);
+        assertIdDefined(bundleId, Platform.IOS);
         openDeeplinkIos(path, bundleId as string, timeout);
     } else {
-        assertIdDefined(appId, Os.ANDROID);
+        assertIdDefined(appId, Platform.ANDROID);
         openDeeplinkAndroid(path, appId as string);
     }
 }
