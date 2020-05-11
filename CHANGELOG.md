@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/martinfrancois/wdio-mobile-utils/compare/v4.0.0...v4.0.1) (2020-05-11)
+
+### Bug Fixes
+
+-   **select:** throw an error only when a selector is really accessed on a platform which is null ([54a0700](https://github.com/martinfrancois/wdio-mobile-utils/commit/54a0700822c77cc406c9d87a5a78c2896a94f616))
+
 ## [4.0.0](https://github.com/martinfrancois/wdio-mobile-utils/compare/v3.2.0...v4.0.0) (2020-05-11)
 
 ### ⚠ BREAKING CHANGES
