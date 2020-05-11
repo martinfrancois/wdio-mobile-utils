@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/martinfrancois/wdio-mobile-utils/compare/v3.2.0...v4.0.0) (2020-05-11)
+
+### ⚠ BREAKING CHANGES
+
+-   **androidSelector:** `AndroidSelector.android(...)` is now `AndroidSelector.of(...)`
+
+Signed-off-by: martinfrancois <f.martin@fastmail.com>
+
+-   **iosSelector:** `IosSelector.ios(...)` is now `IosSelector.of(...)`
+
+Signed-off-by: martinfrancois <f.martin@fastmail.com>
+
+-   **utils:** App-related utility functions `queryAppState`, `isAppState`, `isBrowserAppState`, `openSafari`, `openApp` were moved from `utils.ts` to `appUtils.ts`
+
+Signed-off-by: martinfrancois <f.martin@fastmail.com>
+
+-   **utils:** The old select API (in utils.ts) was replaced by `mobile$(...)` and `mobile$$(...)` methods instead.
+
+Signed-off-by: martinfrancois <f.martin@fastmail.com>
+
+### Features
+
+-   **internal/utils:** add method to check if argument is of type string ([ffcdd4c](https://github.com/martinfrancois/wdio-mobile-utils/commit/ffcdd4ce0abdd01da1c60ae65e3b1c974cfc96cb))
+-   **select:** add accessibilityId selectors ([684a7af](https://github.com/martinfrancois/wdio-mobile-utils/commit/684a7afe837e94b393b4d41a3581f4bdf9a20559))
+-   **select:** add initial new select API with `enabled` and `disabled` selectors ([e8aaef0](https://github.com/martinfrancois/wdio-mobile-utils/commit/e8aaef03de539a360ff3f92389a0d484a9b55afe))
+-   **select:** add select API to use with selectors ([72e818f](https://github.com/martinfrancois/wdio-mobile-utils/commit/72e818f44db4d6c32c3380190d0fc716d8e86923))
+-   **select:** add text selectors ([a2dc010](https://github.com/martinfrancois/wdio-mobile-utils/commit/a2dc0108f50ab9b872414f43b4177121bd1e395d))
+-   **select:** add type selector ([10efd99](https://github.com/martinfrancois/wdio-mobile-utils/commit/10efd994ba7eb905823d40747e6ea88f8564c4c3))
+-   **select:** implement combination selectors (and & or) for iOS ([1b4918d](https://github.com/martinfrancois/wdio-mobile-utils/commit/1b4918d722a42a23c2279ce1d4a491cfe02f9b9b))
+-   **selector:** allow either the iOS or Android selector to be null ([108209f](https://github.com/martinfrancois/wdio-mobile-utils/commit/108209f7145dab763c451dbe6e48c7673e28cfeb))
+-   **selector:** implement and & or for android (happy path) ([af78f42](https://github.com/martinfrancois/wdio-mobile-utils/commit/af78f428704c809179e3ade22dfe795d50aee92e))
+-   **selector:** implement edge cases for or & and combinations on Android ([2a9bd72](https://github.com/martinfrancois/wdio-mobile-utils/commit/2a9bd72d6c3abe7244cb8d41123b355781b8ac7a))
+-   **utils:** remove old select API in favor of new select API ([4503cb4](https://github.com/martinfrancois/wdio-mobile-utils/commit/4503cb41f261aa0fd26e6ab50c8699d18fede7f9))
+
+*   **androidSelector:** rename factory method to `of` ([becd0d0](https://github.com/martinfrancois/wdio-mobile-utils/commit/becd0d0f0180e24d38a7abc342960515d68be2b0))
+*   **iosSelector:** rename factory method to `of` ([33bfe60](https://github.com/martinfrancois/wdio-mobile-utils/commit/33bfe60887c17645647019e6b154130d0e5a9979))
+*   **utils:** move app-related utility functions to appUtils.ts ([ef4eb71](https://github.com/martinfrancois/wdio-mobile-utils/commit/ef4eb712b75254d2bc7015043b793aa158be3d61))
+
 ## [3.2.0](https://github.com/martinfrancois/wdio-mobile-utils/compare/v3.1.3...v3.2.0) (2020-05-10)
 
 ### Features
