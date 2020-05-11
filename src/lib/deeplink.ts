@@ -138,7 +138,7 @@ export function openDeeplink(
     if (browser.isIOS) {
         assertIdDefined(bundleId, Platform.IOS);
         openDeeplinkIos(path, bundleId as string, timeout);
-    } else if (browser.isIOS) {
+    } else if (browser.isAndroid) {
         assertIdDefined(appId, Platform.ANDROID);
         openDeeplinkAndroid(path, appId as string);
     } else {
