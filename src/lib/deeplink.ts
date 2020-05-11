@@ -3,6 +3,14 @@ import { DEFAULT_TIMEOUT } from './constants';
 import { assertIdDefined, Os } from './internal/utils';
 import { acceptAlert } from './alert';
 import { APP_RUNNING_STATE, isAppState, openSafari } from './appUtils';
+import { mobile$ } from './select/select';
+import { Type } from './select/type';
+import { Selector } from './select/selector';
+import {
+    IOS_PREDICATE_ATTRIBUTES,
+    IOS_PREDICATE_COMPARATOR,
+    IosSelector,
+} from './select/iosSelector';
 
 const log = logger('Deeplink');
 
@@ -33,17 +41,33 @@ function openDeeplinkIos(deeplink: string, bundleId: string): void {
     browser.execute('mobile: terminateApp', { bundleId: bundleId });
     isAppState(APP_RUNNING_STATE.NOT_RUNNING, true, undefined, bundleId);
 
-    const urlButtonSelector =
-        "(type == 'XCUIElementTypeButton' || type == 'XCUIElementTypeTextField') && name CONTAINS 'URL'";
-    const urlButton = $(`-ios predicate string:${urlButtonSelector}`);
+    // TODO: can it be "equals"?
+    const nameContainsUrl = Selector.custom(
+        null,
+        IosSelector.of(
+            IOS_PREDICATE_ATTRIBUTES.NAME,
+            IOS_PREDICATE_COMPARATOR.CONTAINS,
+            'URL'
+        )
+    );
+
+    const urlButton = mobile$(
+        Selector.and(
+            Selector.or(
+                Selector.type(Type.BUTTON),
+                Selector.type(Type.TEXT_FIELD)
+            ),
+            nameContainsUrl
+        )
+    );
 
     // Wait for the url button to appear and click on it so the text field will appear
     urlButton.waitForDisplayed(DEFAULT_TIMEOUT);
     urlButton.click();
 
-    const urlFieldSelector =
-        "type == 'XCUIElementTypeTextField' && name CONTAINS 'URL'";
-    const urlField = $(`-ios predicate string:${urlFieldSelector}`);
+    const urlField = mobile$(
+        Selector.and(Selector.type(Type.TEXT_FIELD), nameContainsUrl)
+    );
 
     // Submit the url and add a break
     urlField.setValue(deeplink + '\uE007');
@@ -56,7 +80,6 @@ function openDeeplinkIos(deeplink: string, bundleId: string): void {
             'App was opened successfully via deeplink and is running in the foreground'
         );
     } else {
-        // TODO: is this executed?
         const message =
             'Could not find an open button for deeplink: ' + deeplink;
         log.error(message);
