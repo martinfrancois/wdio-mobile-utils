@@ -6,6 +6,9 @@ import {
 import { AndroidSelector } from './androidSelector';
 import { IosSelector } from './iosSelector';
 import { Type } from './type';
+import logger from '@wdio/logger';
+
+const log = logger('Selector');
 
 export class Selector {
     private androidSelector: string;
@@ -17,19 +20,84 @@ export class Selector {
     }
 
     public static and(selector1: Selector, selector2: Selector): Selector {
-        const andAndroid = selector1.android() + selector2.android();
+        const andAndroid = this.combineAndAndroid(selector1, selector2);
         const andIos = '(' + selector1.ios() + ' && ' + selector2.ios() + ')';
         return new Selector(andAndroid, andIos);
     }
 
+    private static combineAndAndroid(
+        selector1: Selector,
+        selector2: Selector
+    ): string {
+        const splitOr = ';new UiSelector()';
+        const split1 = selector1.android().split(splitOr);
+        const split2 = selector2.android().split(splitOr);
+        if (split1.length == 1 && split2.length == 1) {
+            // standard case, individual selectors were not combined with an "or" condition before
+            return split1[0] + split2[0];
+        } else if (split1.length == 2 && split2.length == 1) {
+            /**
+             * When there is an AND condition in a nested OR condition, we have to transform the boolean expression
+             * to only use AND conditions in the parentheses and connect them together using OR conditions
+             * since UiSelector's can only be OR combined by a semicolon, which will not take into account any grouping.
+             */
+
+            /**
+             * (s1 || s3) && s2
+             * is equivalent to
+             * (s1 && s2) || (s3 && s2)
+             */
+            const s1 = split1[0];
+            const s2 = split2[0];
+            const s3 = split1[1];
+            return this.combineOrAndroid(s1 + s2, s3 + s2);
+        } else if (split1.length == 1 && split2.length == 2) {
+            /**
+             * s2 && (s1 || s3)
+             * is equivalent to
+             * (s2 && s1) || (s2 && s3)
+             */
+            const s1 = split2[0];
+            const s2 = split1[0];
+            const s3 = split2[1];
+            return this.combineOrAndroid(s2 + s1, s2 + s3);
+        } else if (split1.length == 2 && split2.length == 2) {
+            /**
+             *  (s1 || s2) && (s3 || s4)
+             * is equivalent to
+             * (s1 && s3) || (s1 && s4) || (s2 && s3) || (s2 && s4)
+             */
+            const s1 = split1[0];
+            const s2 = split1[1];
+            const s3 = split2[0];
+            const s4 = split2[1];
+            const part1 = this.combineOrAndroid(s1 + s3, s1 + s4); // (s1 && s3) || (s1 && s4)
+            const part2 = this.combineOrAndroid(s2 + s3, s2 + s4); // (s2 && s3) || (s2 && s4)
+            return this.combineOrAndroid(part1, part2);
+        } else {
+            /**
+             * Here we have multiple levels of nested OR conditions with multiple levels of nested AND conditions.
+             * These cases should be very rare and if they occur, it may be better to use a different approach in such a case anyways.
+             * So we don't handle them but log an error to warn the user.
+             */
+            log.error(
+                'Using multiple levels of nested OR conditions together with AND conditions can cause unexpected results on Android, please re-write the expression to only use OR conditions between the AND conditions.'
+            );
+            return selector1.android() + selector2.android();
+        }
+    }
+
     public static or(selector1: Selector, selector2: Selector): Selector {
-        const andAndroid =
-            selector1.android() +
-            ';new UiSelector()' +
-            selector2.android() +
-            '';
+        const andAndroid = this.combineOrAndroid(
+            selector1.android(),
+            selector2.android()
+        );
         const andIos = '(' + selector1.ios() + ' || ' + selector2.ios() + ')';
         return new Selector(andAndroid, andIos);
+    }
+
+    private static combineOrAndroid(selector1: string, selector2: string) {
+        return selector1 + ';new UiSelector()' + selector2;
     }
 
     public static type(type: Type): Selector {

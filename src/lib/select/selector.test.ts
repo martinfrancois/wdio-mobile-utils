@@ -119,6 +119,22 @@ describe('Selector', function () {
                         'new UiSelector().className("android.widget.Button").enabled(true)' // (s3 && s4)
                 );
             });
+
+            it('multiple levels of nested AND and OR conditions', function () {
+                const combined = Selector.and(
+                    Selector.or(
+                        Selector.or(Selector.and(s1, s2), Selector.or(s1, s2)),
+                        Selector.and(Selector.and(s1, s2), Selector.or(s1, s2))
+                    ),
+                    Selector.or(
+                        Selector.or(Selector.and(s1, s2), Selector.or(s1, s2)),
+                        Selector.and(Selector.and(s1, s2), Selector.or(s1, s2))
+                    )
+                );
+                expect(combined.android()).toBe(
+                    `.className("android.widget.EditText").text("${VALUE}");new UiSelector().className("android.widget.EditText");new UiSelector().text("${VALUE}");new UiSelector().className("android.widget.EditText").text("${VALUE}").className("android.widget.EditText");new UiSelector().className("android.widget.EditText").text("${VALUE}").text("${VALUE}").className("android.widget.EditText").text("${VALUE}");new UiSelector().className("android.widget.EditText");new UiSelector().text("${VALUE}");new UiSelector().className("android.widget.EditText").text("${VALUE}").className("android.widget.EditText");new UiSelector().className("android.widget.EditText").text("${VALUE}").text("${VALUE}")`
+                );
+            });
         });
     });
 
