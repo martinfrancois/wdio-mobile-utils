@@ -26,10 +26,3 @@ export function getAccessibilityIdOfElement(
         return element.getAttribute('label');
     }
 }
-
-/**
- * Get Safari URL.
- */
-export function getSafariUrl(): WebdriverIO.Element {
-    return $('~URL');
-}
