@@ -91,6 +91,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-variable"><a href="globals.html#android_selector_null_error" class="tsd-kind-icon">ANDROID_<wbr>SELECTOR_<wbr>NULL_<wbr>ERROR</a></li>
 								<li class="tsd-kind-variable"><a href="globals.html#chrome_app_id" class="tsd-kind-icon">CHROME_<wbr>APP_<wbr>ID</a></li>
+								<li class="tsd-kind-variable"><a href="globals.html#combination_selector_null_error" class="tsd-kind-icon">COMBINATION_<wbr>SELECTOR_<wbr>NULL_<wbr>ERROR</a></li>
 								<li class="tsd-kind-variable"><a href="globals.html#default_timeout" class="tsd-kind-icon">DEFAULT_<wbr>TIMEOUT</a></li>
 								<li class="tsd-kind-variable"><a href="globals.html#ios_selector_null_error" class="tsd-kind-icon">IOS_<wbr>SELECTOR_<wbr>NULL_<wbr>ERROR</a></li>
 								<li class="tsd-kind-variable"><a href="globals.html#safari_bundle_id" class="tsd-kind-icon">SAFARI_<wbr>BUNDLE_<wbr>ID</a></li>
@@ -146,7 +147,7 @@
 					<div class="tsd-signature tsd-kind-icon">ANDROID_<wbr>SELECTOR_<wbr>NULL_<wbr>ERROR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"Android selector is null, but an attempt was made to access it on Android. Please define a selector if you want to use it on Android."</span><span class="tsd-signature-symbol"> = &quot;Android selector is null, but an attempt was made to access it on Android. Please define a selector if you want to use it on Android.&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/internal/utils.ts#L53">lib/internal/utils.ts:53</a></li>
+							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/internal/utils.ts#L53">lib/internal/utils.ts:53</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -166,9 +167,29 @@
 					<div class="tsd-signature tsd-kind-icon">CHROME_<wbr>APP_<wbr>ID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"com.android.chrome"</span><span class="tsd-signature-symbol"> = &quot;com.android.chrome&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/constants.ts#L5">lib/constants.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/constants.ts#L5">lib/constants.ts:5</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable">
+					<a name="combination_selector_null_error" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> COMBINATION_<wbr>SELECTOR_<wbr>NULL_<wbr>ERROR</h3>
+					<div class="tsd-signature tsd-kind-icon">COMBINATION_<wbr>SELECTOR_<wbr>NULL_<wbr>ERROR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"A selector with an Android selector of null cannot be combined with an iOS selector of null, as the resulting selector would be null on both platforms."</span><span class="tsd-signature-symbol"> = &quot;A selector with an Android selector of null cannot be combined with an iOS selector of null, as the resulting selector would be null on both platforms.&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/internal/utils.ts#L69">lib/internal/utils.ts:69</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Represents an error implying an Selector with null as its AndroidSelector was combined with a Selector with null as IosSelector.
+							Since this would result in a selector with null on both platforms, it wouldn&#39;t be usable on either Android or iOS.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>internal</dt>
+							<dd></dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable">
 					<a name="default_timeout" class="tsd-anchor"></a>
@@ -176,7 +197,7 @@
 					<div class="tsd-signature tsd-kind-icon">DEFAULT_<wbr>TIMEOUT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">60000</span><span class="tsd-signature-symbol"> = 60000</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/constants.ts#L1">lib/constants.ts:1</a></li>
+							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/constants.ts#L1">lib/constants.ts:1</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -186,7 +207,7 @@
 					<div class="tsd-signature tsd-kind-icon">IOS_<wbr>SELECTOR_<wbr>NULL_<wbr>ERROR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"iOS selector is null, but an attempt was made to access it on iOS. Please define a selector if you want to use it on iOS."</span><span class="tsd-signature-symbol"> = &quot;iOS selector is null, but an attempt was made to access it on iOS. Please define a selector if you want to use it on iOS.&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/internal/utils.ts#L45">lib/internal/utils.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/internal/utils.ts#L45">lib/internal/utils.ts:45</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -206,7 +227,7 @@
 					<div class="tsd-signature tsd-kind-icon">SAFARI_<wbr>BUNDLE_<wbr>ID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"com.apple.mobilesafari"</span><span class="tsd-signature-symbol"> = &quot;com.apple.mobilesafari&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/constants.ts#L3">lib/constants.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/constants.ts#L3">lib/constants.ts:3</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -216,7 +237,7 @@
 					<div class="tsd-signature tsd-kind-icon">SELECTOR_<wbr>NULL_<wbr>ERROR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"Both Android and iOS Selectors are null, please define at least a selector for one platform."</span><span class="tsd-signature-symbol"> = &quot;Both Android and iOS Selectors are null, please define at least a selector for one platform.&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/internal/utils.ts#L61">lib/internal/utils.ts:61</a></li>
+							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/internal/utils.ts#L61">lib/internal/utils.ts:61</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -236,7 +257,7 @@
 					<div class="tsd-signature tsd-kind-icon">UNSUPPORTED_<wbr>PLATFORM_<wbr>ERROR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"You are using an unsupported platform, only Android and iOS are supported!"</span><span class="tsd-signature-symbol"> = &quot;You are using an unsupported platform, only Android and iOS are supported!&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/internal/utils.ts#L37">lib/internal/utils.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/internal/utils.ts#L37">lib/internal/utils.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -256,8 +277,8 @@
 					<div class="tsd-signature tsd-kind-icon">log<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = logger(&#x27;Deeplink&#x27;)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/select/selector.ts#L18">lib/select/selector.ts:18</a></li>
-							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/deeplink.ts#L15">lib/deeplink.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/select/selector.ts#L17">lib/select/selector.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/deeplink.ts#L15">lib/deeplink.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -274,7 +295,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/alert.ts#L58">lib/alert.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/alert.ts#L58">lib/alert.ts:58</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -297,7 +318,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/alert.ts#L22">lib/alert.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/alert.ts#L22">lib/alert.ts:22</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -314,7 +335,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/internal/utils.ts#L12">lib/internal/utils.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/internal/utils.ts#L12">lib/internal/utils.ts:12</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -355,7 +376,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/select/select.ts#L13">lib/select/select.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/select/select.ts#L17">lib/select/select.ts:17</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -378,7 +399,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/alert.ts#L73">lib/alert.ts:73</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/alert.ts#L73">lib/alert.ts:73</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -401,7 +422,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/alert.ts#L89">lib/alert.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/alert.ts#L89">lib/alert.ts:89</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -433,7 +454,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/utils.ts#L21">lib/utils.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/utils.ts#L21">lib/utils.ts:21</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -463,7 +484,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/utils.ts#L32">lib/utils.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/utils.ts#L32">lib/utils.ts:32</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -485,7 +506,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/alert.ts#L50">lib/alert.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/alert.ts#L50">lib/alert.ts:50</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -507,7 +528,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/appUtils.ts#L37">lib/appUtils.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/appUtils.ts#L37">lib/appUtils.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -556,7 +577,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/appUtils.ts#L64">lib/appUtils.ts:64</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/appUtils.ts#L64">lib/appUtils.ts:64</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -593,7 +614,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/environment.ts#L4">lib/environment.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/environment.ts#L4">lib/environment.ts:4</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -615,7 +636,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/internal/utils.ts#L28">lib/internal/utils.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/internal/utils.ts#L28">lib/internal/utils.ts:28</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -657,7 +678,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/select/select.ts#L27">lib/select/select.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/select/select.ts#L39">lib/select/select.ts:39</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -680,7 +701,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/select/select.ts#L31">lib/select/select.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/select/select.ts#L43">lib/select/select.ts:43</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -703,7 +724,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/appUtils.ts#L92">lib/appUtils.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/appUtils.ts#L92">lib/appUtils.ts:92</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -746,7 +767,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/deeplink.ts#L109">lib/deeplink.ts:109</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/deeplink.ts#L109">lib/deeplink.ts:109</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -796,7 +817,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/deeplink.ts#L20">lib/deeplink.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/deeplink.ts#L20">lib/deeplink.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -818,7 +839,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/deeplink.ts#L90">lib/deeplink.ts:90</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/deeplink.ts#L90">lib/deeplink.ts:90</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -844,7 +865,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/deeplink.ts#L34">lib/deeplink.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/deeplink.ts#L34">lib/deeplink.ts:34</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -870,7 +891,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/appUtils.ts#L78">lib/appUtils.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/appUtils.ts#L78">lib/appUtils.ts:78</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -892,7 +913,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/appUtils.ts#L19">lib/appUtils.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/appUtils.ts#L19">lib/appUtils.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -934,7 +955,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/utils.ts#L6">lib/utils.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/utils.ts#L6">lib/utils.ts:6</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -964,7 +985,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/alert.ts#L41">lib/alert.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/alert.ts#L41">lib/alert.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -985,7 +1006,7 @@
 					<div class="tsd-signature tsd-kind-icon">SELECTORS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/alert.ts#L13">lib/alert.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/alert.ts#L13">lib/alert.ts:13</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
@@ -994,7 +1015,7 @@
 						<div class="tsd-signature tsd-kind-icon">ANDROID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/alert.ts#L14">lib/alert.ts:14</a></li>
+								<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/alert.ts#L14">lib/alert.ts:14</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1003,7 +1024,7 @@
 							<div class="tsd-signature tsd-kind-icon">RESOURCE_<wbr>ID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;android:id/alertTitle&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/alert.ts#L15">lib/alert.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/alert.ts#L15">lib/alert.ts:15</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1014,7 +1035,7 @@
 						<div class="tsd-signature tsd-kind-icon">IOS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/alert.ts#L17">lib/alert.ts:17</a></li>
+								<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/alert.ts#L17">lib/alert.ts:17</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1023,7 +1044,7 @@
 							<div class="tsd-signature tsd-kind-icon">TYPE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;XCUIElementTypeAlert&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/alert.ts#L18">lib/alert.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/alert.ts#L18">lib/alert.ts:18</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1035,7 +1056,7 @@
 					<div class="tsd-signature tsd-kind-icon">Selectors<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/select/select.ts#L4">lib/select/select.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/select/select.ts#L8">lib/select/select.ts:8</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
@@ -1044,7 +1065,7 @@
 						<div class="tsd-signature tsd-kind-icon">ANDROID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/select/select.ts#L5">lib/select/select.ts:5</a></li>
+								<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/select/select.ts#L9">lib/select/select.ts:9</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1053,7 +1074,7 @@
 							<div class="tsd-signature tsd-kind-icon">UI_<wbr>SELECTOR_<wbr>PREFIX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;android&#x3D;new UiSelector()&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/select/select.ts#L6">lib/select/select.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/select/select.ts#L10">lib/select/select.ts:10</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1064,7 +1085,7 @@
 						<div class="tsd-signature tsd-kind-icon">IOS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/select/select.ts#L8">lib/select/select.ts:8</a></li>
+								<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/select/select.ts#L12">lib/select/select.ts:12</a></li>
 							</ul>
 						</aside>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -1073,7 +1094,7 @@
 							<div class="tsd-signature tsd-kind-icon">PREDICATE_<wbr>PREFIX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;-ios predicate string:&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/3d6ff04/src/lib/select/select.ts#L9">lib/select/select.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/martinfrancois/wdio-mobile-utils/blob/54a0700/src/lib/select/select.ts#L13">lib/select/select.ts:13</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1123,6 +1144,9 @@
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#chrome_app_id" class="tsd-kind-icon">CHROME_<wbr>APP_<wbr>ID</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#combination_selector_null_error" class="tsd-kind-icon">COMBINATION_<wbr>SELECTOR_<wbr>NULL_<wbr>ERROR</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#default_timeout" class="tsd-kind-icon">DEFAULT_<wbr>TIMEOUT</a>
