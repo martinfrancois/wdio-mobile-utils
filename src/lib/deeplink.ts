@@ -1,8 +1,8 @@
 import logger from '@wdio/logger';
 import { DEFAULT_TIMEOUT, SAFARI_BUNDLE_ID } from './constants';
-import { APP_RUNNING_STATE, isAppState, isBrowserAppState } from './utils';
 import { assertIdDefined, Os } from './internal/utils';
 import { acceptAlert } from './alert';
+import { APP_RUNNING_STATE, isAppState, isBrowserAppState } from './appUtils';
 
 const log = logger('Deeplink');
 
