@@ -29,23 +29,25 @@ export function queryAppState(appId?: string, bundleId?: string) {
 /**
  * Returns true if the specified app state is met.
  *
- * @param {boolean} state       Which state should be checked for
+ * @param {boolean} state       which state to check for
  * @param {boolean} wait        If set to true, will wait for the app to be running.
  * @param {string} appId        ID of the app (Android)
  * @param {string} bundleId     bundle id of the app (iOS)
+ * @param {number} timeout      how long to wait until the state is met
  */
 export function isAppState(
     state: APP_RUNNING_STATE,
     wait = false,
     appId?: string,
-    bundleId?: string
+    bundleId?: string,
+    timeout = DEFAULT_TIMEOUT
 ): boolean {
     if (wait) {
         return browser.waitUntil(
             () => {
                 return queryAppState(appId, bundleId) === state;
             },
-            DEFAULT_TIMEOUT,
+            timeout,
             'App is not in state: ' + state
         );
     } else {

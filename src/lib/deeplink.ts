@@ -17,7 +17,7 @@ const log = logger('Deeplink');
 /**
  * Accepts an alert in Safari which appears upon opening a deeplink, tapping the "Open" button.
  */
-function openDeeplinkAlert() {
+function openDeeplinkAlert(timeout: number) {
     try {
         acceptAlert();
     } catch (e) {
@@ -26,12 +26,16 @@ function openDeeplinkAlert() {
         );
         // accepting an alert on Safari was added in Appium 1.17.0, apply backward compatibility layer for older versions
         const openButton = $('~Open');
-        openButton.waitForDisplayed(DEFAULT_TIMEOUT);
+        openButton.waitForDisplayed(timeout);
         openButton.click();
     }
 }
 
-function openDeeplinkIos(deeplink: string, bundleId: string): void {
+function openDeeplinkIos(
+    deeplink: string,
+    bundleId: string,
+    timeout: number
+): void {
     log.info('Opening Deeplink on iOS');
 
     log.trace('Launching Safari');
@@ -39,7 +43,13 @@ function openDeeplinkIos(deeplink: string, bundleId: string): void {
 
     // terminate the app under test
     browser.execute('mobile: terminateApp', { bundleId: bundleId });
-    isAppState(APP_RUNNING_STATE.NOT_RUNNING, true, undefined, bundleId);
+    isAppState(
+        APP_RUNNING_STATE.NOT_RUNNING,
+        true,
+        undefined,
+        bundleId,
+        timeout
+    );
 
     const nameContainsUrl = Selector.custom(
         null,
@@ -61,7 +71,7 @@ function openDeeplinkIos(deeplink: string, bundleId: string): void {
     );
 
     // Wait for the url button to appear and click on it so the text field will appear
-    urlButton.waitForDisplayed(DEFAULT_TIMEOUT);
+    urlButton.waitForDisplayed(timeout);
     urlButton.click();
 
     const urlField = mobile$(
@@ -71,10 +81,18 @@ function openDeeplinkIos(deeplink: string, bundleId: string): void {
     // Submit the url and add a break
     urlField.setValue(deeplink + '\uE007');
 
-    openDeeplinkAlert();
+    openDeeplinkAlert(timeout);
 
     log.trace('Open button was clicked on Alert');
-    if (isAppState(APP_RUNNING_STATE.FOREGROUND, true, undefined, bundleId)) {
+    if (
+        isAppState(
+            APP_RUNNING_STATE.FOREGROUND,
+            true,
+            undefined,
+            bundleId,
+            timeout
+        )
+    ) {
         log.info(
             'App was opened successfully via deeplink and is running in the foreground'
         );
@@ -101,19 +119,21 @@ function openDeeplinkAndroid(path: string, appId: string) {
  * @note When using Appium <1.17.0 with iOS, it will only work with English system language.
  * Upgrade to Appium >=1.17.0 for support of all locales on iOS.
  * Support for Appium <1.17.0 will be dropped in the future.
- * @param {string} path to the deeplink.
+ * @param {string} path to the deeplink
  * @param {string} appId ID of the app (Android)
  * @param {string} bundleId bundle id of the app (iOS)
+ * @param {number} timeout how long to wait in each step of the process until the deeplink has been opened
  */
 export function openDeeplink(
     path: string,
     appId?: string,
-    bundleId?: string
+    bundleId?: string,
+    timeout = DEFAULT_TIMEOUT
 ): void {
     log.trace('openDeeplink: ' + path);
     if (browser.isIOS) {
         assertIdDefined(bundleId, Os.IOS);
-        openDeeplinkIos(path, bundleId as string);
+        openDeeplinkIos(path, bundleId as string, timeout);
     } else {
         assertIdDefined(appId, Os.ANDROID);
         openDeeplinkAndroid(path, appId as string);
