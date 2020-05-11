@@ -40,7 +40,7 @@ export class IosSelector<T> {
         this.value = value;
     }
 
-    public static ios<T>(
+    public static of<T>(
         attribute: IOS_PREDICATE_ATTRIBUTES,
         comparator: IOS_PREDICATE_COMPARATOR,
         value: T

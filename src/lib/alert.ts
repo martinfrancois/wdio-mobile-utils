@@ -26,7 +26,7 @@ function alertElement(): WebdriverIO.Element {
                 ANDROID_UISELECTOR_PROPERTIES.RESOURCE_ID,
                 SELECTORS.ANDROID.RESOURCE_ID
             ),
-            IosSelector.ios(
+            IosSelector.of(
                 IOS_PREDICATE_ATTRIBUTES.TYPE,
                 IOS_PREDICATE_COMPARATOR.EQUALS,
                 SELECTORS.IOS.TYPE

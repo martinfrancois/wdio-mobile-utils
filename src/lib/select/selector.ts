@@ -136,7 +136,7 @@ export class Selector {
                 ANDROID_UISELECTOR_PROPERTIES.CLASS_NAME,
                 androidClassName
             ),
-            IosSelector.ios(
+            IosSelector.of(
                 IOS_PREDICATE_ATTRIBUTES.TYPE,
                 IOS_PREDICATE_COMPARATOR.EQUALS,
                 iosType
@@ -147,7 +147,7 @@ export class Selector {
     public static text(text: string): Selector {
         return this.custom(
             AndroidSelector.android(ANDROID_UISELECTOR_PROPERTIES.TEXT, text),
-            IosSelector.ios(
+            IosSelector.of(
                 IOS_PREDICATE_ATTRIBUTES.LABEL,
                 IOS_PREDICATE_COMPARATOR.EQUALS,
                 text
@@ -160,7 +160,7 @@ export class Selector {
                 ANDROID_UISELECTOR_PROPERTIES.TEXT_CONTAINS,
                 text
             ),
-            IosSelector.ios(
+            IosSelector.of(
                 IOS_PREDICATE_ATTRIBUTES.LABEL,
                 IOS_PREDICATE_COMPARATOR.CONTAINS,
                 text
@@ -173,7 +173,7 @@ export class Selector {
                 ANDROID_UISELECTOR_PROPERTIES.TEXT_MATCHES,
                 text
             ),
-            IosSelector.ios(
+            IosSelector.of(
                 IOS_PREDICATE_ATTRIBUTES.LABEL,
                 IOS_PREDICATE_COMPARATOR.MATCHES,
                 text
@@ -186,7 +186,7 @@ export class Selector {
                 ANDROID_UISELECTOR_PROPERTIES.TEXT_STARTS_WITH,
                 text
             ),
-            IosSelector.ios(
+            IosSelector.of(
                 IOS_PREDICATE_ATTRIBUTES.LABEL,
                 IOS_PREDICATE_COMPARATOR.BEGINS_WITH,
                 text
@@ -200,7 +200,7 @@ export class Selector {
                 ANDROID_UISELECTOR_PROPERTIES.DESCRIPTION,
                 accessibilityId
             ),
-            IosSelector.ios(
+            IosSelector.of(
                 IOS_PREDICATE_ATTRIBUTES.NAME,
                 IOS_PREDICATE_COMPARATOR.EQUALS,
                 accessibilityId
@@ -213,7 +213,7 @@ export class Selector {
                 ANDROID_UISELECTOR_PROPERTIES.DESCRIPTION_CONTAINS,
                 accessibilityId
             ),
-            IosSelector.ios(
+            IosSelector.of(
                 IOS_PREDICATE_ATTRIBUTES.NAME,
                 IOS_PREDICATE_COMPARATOR.CONTAINS,
                 accessibilityId
@@ -226,7 +226,7 @@ export class Selector {
                 ANDROID_UISELECTOR_PROPERTIES.DESCRIPTION_MATCHES,
                 accessibilityId
             ),
-            IosSelector.ios(
+            IosSelector.of(
                 IOS_PREDICATE_ATTRIBUTES.NAME,
                 IOS_PREDICATE_COMPARATOR.MATCHES,
                 accessibilityId
@@ -239,7 +239,7 @@ export class Selector {
                 ANDROID_UISELECTOR_PROPERTIES.DESCRIPTION_STARTS_WITH,
                 accessibilityId
             ),
-            IosSelector.ios(
+            IosSelector.of(
                 IOS_PREDICATE_ATTRIBUTES.NAME,
                 IOS_PREDICATE_COMPARATOR.BEGINS_WITH,
                 accessibilityId
@@ -253,7 +253,7 @@ export class Selector {
                 ANDROID_UISELECTOR_PROPERTIES.ENABLED,
                 true
             ),
-            IosSelector.ios(
+            IosSelector.of(
                 IOS_PREDICATE_ATTRIBUTES.ENABLED,
                 IOS_PREDICATE_COMPARATOR.EQUALS,
                 1
@@ -266,7 +266,7 @@ export class Selector {
                 ANDROID_UISELECTOR_PROPERTIES.ENABLED,
                 false
             ),
-            IosSelector.ios(
+            IosSelector.of(
                 IOS_PREDICATE_ATTRIBUTES.ENABLED,
                 IOS_PREDICATE_COMPARATOR.EQUALS,
                 0

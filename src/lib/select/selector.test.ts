@@ -295,7 +295,7 @@ describe('Selector', function () {
 
     describe('custom', function () {
         it('should throw an error if the Android selector is null and it was accessed', function () {
-            const anyIosSelector = IosSelector.ios(
+            const anyIosSelector = IosSelector.of(
                 IOS_PREDICATE_ATTRIBUTES.NAME,
                 IOS_PREDICATE_COMPARATOR.CONTAINS,
                 ''
