@@ -1,6 +1,10 @@
 import logger from '@wdio/logger';
 import { DEFAULT_TIMEOUT } from './constants';
-import { assertIdDefined, Platform } from './internal/utils';
+import {
+    assertIdDefined,
+    Platform,
+    UNSUPPORTED_PLATFORM_ERROR,
+} from './internal/utils';
 import { acceptAlert } from './alert';
 import { APP_RUNNING_STATE, isAppState, openSafari } from './appUtils';
 import { mobile$ } from './select/select';
@@ -134,8 +138,10 @@ export function openDeeplink(
     if (browser.isIOS) {
         assertIdDefined(bundleId, Platform.IOS);
         openDeeplinkIos(path, bundleId as string, timeout);
-    } else {
+    } else if (browser.isIOS) {
         assertIdDefined(appId, Platform.ANDROID);
         openDeeplinkAndroid(path, appId as string);
+    } else {
+        throw new Error(UNSUPPORTED_PLATFORM_ERROR);
     }
 }

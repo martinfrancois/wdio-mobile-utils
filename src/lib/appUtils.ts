@@ -1,6 +1,10 @@
 // see http://appium.io/docs/en/commands/device/app/app-state/
 import { CHROME_APP_ID, DEFAULT_TIMEOUT, SAFARI_BUNDLE_ID } from './constants';
-import { assertIdDefined, Platform } from './internal/utils';
+import {
+    assertIdDefined,
+    Platform,
+    UNSUPPORTED_PLATFORM_ERROR,
+} from './internal/utils';
 
 export enum APP_RUNNING_STATE {
     NOT_INSTALLED = 0,
@@ -24,10 +28,11 @@ export function queryAppState(
     if (browser.isIOS) {
         assertIdDefined(bundleId, Platform.IOS);
         return browser.execute('mobile: queryAppState', { bundleId: bundleId });
-    } else {
+    } else if (browser.isAndroid) {
         assertIdDefined(appId, Platform.ANDROID);
         return browser.queryAppState(appId);
     }
+    throw new Error(UNSUPPORTED_PLATFORM_ERROR);
 }
 
 /**
@@ -71,9 +76,10 @@ export function isBrowserAppState(
 ): boolean {
     if (browser.isIOS) {
         return isAppState(state, wait, undefined, SAFARI_BUNDLE_ID);
-    } else {
+    } else if (browser.isAndroid) {
         return isAppState(state, wait, CHROME_APP_ID, undefined);
     }
+    throw new Error(UNSUPPORTED_PLATFORM_ERROR);
 }
 
 /**
@@ -97,8 +103,10 @@ export function openApp(wait = false, appId?: string, bundleId?: string): void {
     browser.waitUntil(() => {
         if (browser.isAndroid) {
             browser.activateApp(appId);
-        } else {
+        } else if (browser.isIOS) {
             browser.execute('mobile: activateApp', { bundleId: bundleId });
+        } else {
+            throw new Error(UNSUPPORTED_PLATFORM_ERROR);
         }
         return isAppState(APP_RUNNING_STATE.FOREGROUND, wait, appId, bundleId);
     });
