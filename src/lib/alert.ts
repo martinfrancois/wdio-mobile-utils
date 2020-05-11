@@ -1,8 +1,14 @@
+import { mobile$ } from './select/select';
 import {
     ANDROID_UISELECTOR_PROPERTIES,
-    buildAndroidUiSelector,
-    selectEqualsType,
-} from './utils';
+    AndroidSelector,
+} from './select/androidSelector';
+import { Selector } from './select/selector';
+import {
+    IOS_PREDICATE_ATTRIBUTES,
+    IOS_PREDICATE_COMPARATOR,
+    IosSelector,
+} from './select/iosSelector';
 
 const SELECTORS = {
     ANDROID: {
@@ -13,11 +19,18 @@ const SELECTORS = {
     },
 };
 
-function getAndroidAlert(): WebdriverIO.Element {
-    return $(
-        buildAndroidUiSelector(
-            ANDROID_UISELECTOR_PROPERTIES.RESOURCE_ID,
-            SELECTORS.ANDROID.RESOURCE_ID
+function alertElement(): WebdriverIO.Element {
+    return mobile$(
+        Selector.custom(
+            AndroidSelector.android(
+                ANDROID_UISELECTOR_PROPERTIES.RESOURCE_ID,
+                SELECTORS.ANDROID.RESOURCE_ID
+            ),
+            IosSelector.ios(
+                IOS_PREDICATE_ATTRIBUTES.TYPE,
+                IOS_PREDICATE_COMPARATOR.EQUALS,
+                SELECTORS.IOS.TYPE
+            )
         )
     );
 }
@@ -26,30 +39,16 @@ function getAndroidAlert(): WebdriverIO.Element {
  * Waits for a native alert to be shown.
  */
 export function waitForAlertDisplayed(): WebdriverIO.Element {
-    if (browser.isAndroid) {
-        const element = getAndroidAlert();
-        element.waitForDisplayed();
-        return element;
-    } else {
-        return selectEqualsType(
-            SELECTORS.IOS.TYPE,
-            true
-        ) as WebdriverIO.Element;
-    }
+    const element = alertElement();
+    element.waitForDisplayed();
+    return element;
 }
 
 /**
  * Returns whether or not a native alert is shown.
  */
 export function isAlertDisplayed(): boolean {
-    if (browser.isAndroid) {
-        return getAndroidAlert().isDisplayed();
-    } else {
-        return (selectEqualsType(
-            SELECTORS.IOS.TYPE,
-            false
-        ) as WebdriverIO.Element).isDisplayed();
-    }
+    return alertElement().isDisplayed();
 }
 
 /**

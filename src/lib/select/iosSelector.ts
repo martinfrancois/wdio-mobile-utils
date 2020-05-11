@@ -1,9 +1,29 @@
-import {
-    IOS_PREDICATE_ATTRIBUTES,
-    IOS_PREDICATE_COMPARATOR,
-    removeStartingTilde,
-} from '../utils';
+import { removeStartingTilde } from '../utils';
 import { isString } from '../internal/utils';
+
+// see https://github.com/facebookarchive/WebDriverAgent/wiki/Predicate-Queries-Construction-Rules
+export enum IOS_PREDICATE_ATTRIBUTES {
+    NAME = 'name',
+    VALUE = 'value',
+    LABEL = 'label',
+    RECT = 'rect',
+    TYPE = 'type',
+    ENABLED = 'enabled',
+    VISIBLE = 'visible',
+    ACCESSIBLE = 'accessible',
+    ACCESSIBILITY_CONTAINER = 'accessibilityContainer',
+}
+
+// see https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/Predicates/Articles/pSyntax.html
+export enum IOS_PREDICATE_COMPARATOR {
+    EQUALS = '==',
+    NOT_EQUALS = '!=',
+    CONTAINS = 'CONTAINS',
+    BEGINS_WITH = 'BEGINSWITH',
+    ENDS_WITH = 'ENDSWITH',
+    LIKE = 'LIKE',
+    MATCHES = 'MATCHES',
+}
 
 export class IosSelector<T> {
     attribute: IOS_PREDICATE_ATTRIBUTES;

@@ -1,10 +1,12 @@
 import {
     ANDROID_UISELECTOR_PROPERTIES,
+    AndroidSelector,
+} from './androidSelector';
+import {
     IOS_PREDICATE_ATTRIBUTES,
     IOS_PREDICATE_COMPARATOR,
-} from '../utils';
-import { AndroidSelector } from './androidSelector';
-import { IosSelector } from './iosSelector';
+    IosSelector,
+} from './iosSelector';
 import { Type } from './type';
 import logger from '@wdio/logger';
 

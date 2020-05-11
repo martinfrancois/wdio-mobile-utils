@@ -1,5 +1,35 @@
-import { ANDROID_UISELECTOR_PROPERTIES, removeStartingTilde } from '../utils';
+import { removeStartingTilde } from '../utils';
 import { isString } from '../internal/utils';
+
+// see https://developer.android.com/reference/androidx/test/uiautomator/UiSelector
+export enum ANDROID_UISELECTOR_PROPERTIES {
+    CHECKABLE = 'checkable',
+    CHECKED = 'checked',
+    CLASS_NAME = 'className',
+    CLASS_NAME_MATCHES = 'classNameMatches',
+    CLICKABLE = 'clickable',
+    DESCRIPTION = 'description',
+    DESCRIPTION_CONTAINS = 'descriptionContains',
+    DESCRIPTION_MATCHES = 'descriptionMatches',
+    DESCRIPTION_STARTS_WITH = 'descriptionStartsWith',
+    ENABLED = 'enabled',
+    FOCUSABLE = 'focusable',
+    FOCUSED = 'focused',
+    FROM_PARENT = 'fromParent',
+    INDEX = 'index',
+    INSTANCE = 'instance',
+    LONG_CLICKABLE = 'longClickable',
+    PACKAGE_NAME = 'packageName',
+    PACKAGE_NAME_MATCHES = 'packageNameMatches',
+    RESOURCE_ID = 'resourceId',
+    RESOURCE_ID_MATCHES = 'resourceIdMatches',
+    SCROLLABLE = 'scrollable',
+    SELECTED = 'selected',
+    TEXT = 'text',
+    TEXT_CONTAINS = 'textContains',
+    TEXT_MATCHES = 'textMatches',
+    TEXT_STARTS_WITH = 'textStartsWith',
+}
 
 export class AndroidSelector<T> {
     private _property: ANDROID_UISELECTOR_PROPERTIES;
