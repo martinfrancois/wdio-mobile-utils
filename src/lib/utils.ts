@@ -17,7 +17,7 @@ export function removeStartingTilde(key: string): string {
  * @param {WebdriverIO.Element} element of which to get the accessibilityId
  * @return {string} the accessibilityId of {@code element}
  */
-export function getAutomationTextOfElement(
+export function getAccessibilityIdOfElement(
     element: WebdriverIO.Element
 ): string {
     if (browser.isAndroid) {
