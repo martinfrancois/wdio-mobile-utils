@@ -40,7 +40,7 @@ export class AndroidSelector<T> {
         this._value = value;
     }
 
-    public static android<T>(
+    public static of<T>(
         property: ANDROID_UISELECTOR_PROPERTIES,
         value: T
     ): AndroidSelector<T> {

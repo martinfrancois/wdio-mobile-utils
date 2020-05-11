@@ -132,7 +132,7 @@ export class Selector {
         }
 
         return this.custom(
-            AndroidSelector.android(
+            AndroidSelector.of(
                 ANDROID_UISELECTOR_PROPERTIES.CLASS_NAME,
                 androidClassName
             ),
@@ -146,7 +146,7 @@ export class Selector {
 
     public static text(text: string): Selector {
         return this.custom(
-            AndroidSelector.android(ANDROID_UISELECTOR_PROPERTIES.TEXT, text),
+            AndroidSelector.of(ANDROID_UISELECTOR_PROPERTIES.TEXT, text),
             IosSelector.of(
                 IOS_PREDICATE_ATTRIBUTES.LABEL,
                 IOS_PREDICATE_COMPARATOR.EQUALS,
@@ -156,7 +156,7 @@ export class Selector {
     }
     public static textContains(text: string): Selector {
         return this.custom(
-            AndroidSelector.android(
+            AndroidSelector.of(
                 ANDROID_UISELECTOR_PROPERTIES.TEXT_CONTAINS,
                 text
             ),
@@ -169,7 +169,7 @@ export class Selector {
     }
     public static textMatches(text: string): Selector {
         return this.custom(
-            AndroidSelector.android(
+            AndroidSelector.of(
                 ANDROID_UISELECTOR_PROPERTIES.TEXT_MATCHES,
                 text
             ),
@@ -182,7 +182,7 @@ export class Selector {
     }
     public static textStartsWith(text: string): Selector {
         return this.custom(
-            AndroidSelector.android(
+            AndroidSelector.of(
                 ANDROID_UISELECTOR_PROPERTIES.TEXT_STARTS_WITH,
                 text
             ),
@@ -196,7 +196,7 @@ export class Selector {
 
     public static accessibilityId(accessibilityId: string): Selector {
         return this.custom(
-            AndroidSelector.android(
+            AndroidSelector.of(
                 ANDROID_UISELECTOR_PROPERTIES.DESCRIPTION,
                 accessibilityId
             ),
@@ -209,7 +209,7 @@ export class Selector {
     }
     public static accessibilityIdContains(accessibilityId: string): Selector {
         return this.custom(
-            AndroidSelector.android(
+            AndroidSelector.of(
                 ANDROID_UISELECTOR_PROPERTIES.DESCRIPTION_CONTAINS,
                 accessibilityId
             ),
@@ -222,7 +222,7 @@ export class Selector {
     }
     public static accessibilityIdMatches(accessibilityId: string): Selector {
         return this.custom(
-            AndroidSelector.android(
+            AndroidSelector.of(
                 ANDROID_UISELECTOR_PROPERTIES.DESCRIPTION_MATCHES,
                 accessibilityId
             ),
@@ -235,7 +235,7 @@ export class Selector {
     }
     public static accessibilityIdStartsWith(accessibilityId: string): Selector {
         return this.custom(
-            AndroidSelector.android(
+            AndroidSelector.of(
                 ANDROID_UISELECTOR_PROPERTIES.DESCRIPTION_STARTS_WITH,
                 accessibilityId
             ),
@@ -249,10 +249,7 @@ export class Selector {
 
     public static enabled(): Selector {
         return this.custom(
-            AndroidSelector.android(
-                ANDROID_UISELECTOR_PROPERTIES.ENABLED,
-                true
-            ),
+            AndroidSelector.of(ANDROID_UISELECTOR_PROPERTIES.ENABLED, true),
             IosSelector.of(
                 IOS_PREDICATE_ATTRIBUTES.ENABLED,
                 IOS_PREDICATE_COMPARATOR.EQUALS,
@@ -262,10 +259,7 @@ export class Selector {
     }
     public static disabled(): Selector {
         return this.custom(
-            AndroidSelector.android(
-                ANDROID_UISELECTOR_PROPERTIES.ENABLED,
-                false
-            ),
+            AndroidSelector.of(ANDROID_UISELECTOR_PROPERTIES.ENABLED, false),
             IosSelector.of(
                 IOS_PREDICATE_ATTRIBUTES.ENABLED,
                 IOS_PREDICATE_COMPARATOR.EQUALS,

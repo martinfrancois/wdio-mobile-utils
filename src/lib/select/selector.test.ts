@@ -308,7 +308,7 @@ describe('Selector', function () {
         });
 
         it('should throw an error if the iOS selector is null and it was accessed', function () {
-            const anyAndroidSelector = AndroidSelector.android(
+            const anyAndroidSelector = AndroidSelector.of(
                 ANDROID_UISELECTOR_PROPERTIES.CLASS_NAME,
                 ''
             );

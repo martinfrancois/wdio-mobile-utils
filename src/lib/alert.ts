@@ -22,7 +22,7 @@ const SELECTORS = {
 function alertElement(): WebdriverIO.Element {
     return mobile$(
         Selector.custom(
-            AndroidSelector.android(
+            AndroidSelector.of(
                 ANDROID_UISELECTOR_PROPERTIES.RESOURCE_ID,
                 SELECTORS.ANDROID.RESOURCE_ID
             ),
