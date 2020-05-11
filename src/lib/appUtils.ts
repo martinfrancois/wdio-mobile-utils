@@ -14,9 +14,13 @@ export enum APP_RUNNING_STATE {
  * Returns the state of the app.
  * @param {string} appId ID of the app (Android)
  * @param {string} bundleId bundle id of the app (iOS)
+ * @returns {APP_RUNNING_STATE} the current app's running state
  * @see http://appium.io/docs/en/commands/device/app/app-state/
  */
-export function queryAppState(appId?: string, bundleId?: string) {
+export function queryAppState(
+    appId?: string,
+    bundleId?: string
+): APP_RUNNING_STATE {
     if (browser.isIOS) {
         assertIdDefined(bundleId, Os.IOS);
         return browser.execute('mobile: queryAppState', { bundleId: bundleId });
@@ -60,8 +64,6 @@ export function isAppState(
  *
  * @param {boolean} state       Which state should be checked for
  * @param {boolean} wait        If set to true, will wait for the app to be running.
- * @param {string} appId        ID of the app (Android)
- * @param {string} bundleId     bundle id of the app (iOS)
  */
 export function isBrowserAppState(
     state: APP_RUNNING_STATE,
@@ -75,9 +77,9 @@ export function isBrowserAppState(
 }
 
 /**
- * Opens Safari.
+ * Opens Safari and waits until it is running.
  */
-export function openSafari() {
+export function openSafari(): void {
     browser.waitUntil(() => {
         browser.execute('mobile: launchApp', { bundleId: SAFARI_BUNDLE_ID });
         return isBrowserAppState(APP_RUNNING_STATE.FOREGROUND, false);
@@ -91,7 +93,7 @@ export function openSafari() {
  * @param {string} appId ID of the app (Android)
  * @param {string} bundleId bundle id of the app (iOS)
  */
-export function openApp(wait = false, appId?: string, bundleId?: string) {
+export function openApp(wait = false, appId?: string, bundleId?: string): void {
     browser.waitUntil(() => {
         if (browser.isAndroid) {
             browser.activateApp(appId);

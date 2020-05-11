@@ -3,7 +3,7 @@
  * This is useful in cases where the automationText can be passed in by the developer, but needs to be without a ~ in front. This makes
  * sure even if the automationText contains a ~ that is not allowed, that it's properly removed, providing greater convenience.
  */
-export function removeStartingTilde(key: string) {
+export function removeStartingTilde(key: string): string {
     if (key.startsWith('~')) {
         return key.substring(1); // cut off ~ in front
     } else {
@@ -12,13 +12,14 @@ export function removeStartingTilde(key: string) {
 }
 
 /**
- * Get the automation text of an element
+ * Returns the accessibilityId of an element.
  *
- * @param {element} element
- *
- * @return {string}
+ * @param {WebdriverIO.Element} element of which to get the accessibilityId
+ * @return {string} the accessibilityId of {@code element}
  */
-export function getAutomationTextOfElement(element: WebdriverIO.Element) {
+export function getAutomationTextOfElement(
+    element: WebdriverIO.Element
+): string {
     if (browser.isAndroid) {
         return element.getAttribute('content-desc');
     } else {

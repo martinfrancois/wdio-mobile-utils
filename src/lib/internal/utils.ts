@@ -1,3 +1,7 @@
+/**
+ * Represents the supported platforms.
+ * @internal
+ */
 export enum Os {
     IOS = 'IOS',
     ANDROID = 'ANDROID',
@@ -9,7 +13,7 @@ export enum Os {
  * @param os operating system under test
  * @internal
  */
-export function assertIdDefined(id: string | undefined, os: Os) {
+export function assertIdDefined(id: string | undefined, os: Os): void {
     if (!id) {
         if (os === Os.IOS) {
             throw new Error('No bundleId was specified for iOS');

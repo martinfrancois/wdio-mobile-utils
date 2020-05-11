@@ -159,7 +159,10 @@ export class Selector {
         return new Selector(orAndroid, orIos);
     }
 
-    private static combineOrAndroid(selector1: string, selector2: string) {
+    private static combineOrAndroid(
+        selector1: string,
+        selector2: string
+    ): string {
         return selector1 + ';new UiSelector()' + selector2;
     }
 
