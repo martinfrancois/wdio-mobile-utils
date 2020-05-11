@@ -28,3 +28,11 @@ export function assertIdDefined(id: string | undefined, os: Os) {
 export function isString<T>(maybeString: T): boolean {
     return typeof maybeString === 'string';
 }
+
+/**
+ * Represents an error implying the platform used is not supported.
+ * This is used in cases where the platform is neither Android nor iOS.
+ * @internal
+ */
+export const UNSUPPORTED_PLATFORM_ERROR =
+    'You are using an unsupported platform, only Android and iOS are supported!';
