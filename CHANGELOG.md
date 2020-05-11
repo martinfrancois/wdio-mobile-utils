@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.0.0](https://github.com/martinfrancois/wdio-mobile-utils/compare/5-v5.0.0...5-v6.0.0) (2020-05-11)
+
+### ⚠ BREAKING CHANGES
+
+-   **utils:** Replace calls to the method by `$('~URL')`
+    The method was removed as it doesn't really serve a purpose and is too simple to be included in a library.
+
+Signed-off-by: martinfrancois <f.martin@fastmail.com>
+
+-   **utils:** Rename calls to the method `getAutomationTextOfElement` to `getAccessibilityIdOfElement`
+
+Signed-off-by: martinfrancois <f.martin@fastmail.com>
+
+### Features
+
+-   consistently throw an error if the platform is neither Android nor iOS ([7eee09a](https://github.com/martinfrancois/wdio-mobile-utils/commit/7eee09ae1840bff50f3282e06ecc8385f1427437))
+-   **utils:** remove method `getSafariUrl` ([d93ff78](https://github.com/martinfrancois/wdio-mobile-utils/commit/d93ff78a41f181ef435d1d8e361b2633c5026f09))
+
+*   **utils:** rename `getAutomationTextOfElement` to `getAccessibilityIdOfElement` ([0cac320](https://github.com/martinfrancois/wdio-mobile-utils/commit/0cac32008ceec913b9dde7024dba2ee91590838e))
+
 ## 5.0.0 (2020-05-11)
 
 ### ⚠ BREAKING CHANGES
