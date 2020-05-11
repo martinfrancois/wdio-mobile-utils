@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.0.1](https://github.com/martinfrancois/wdio-mobile-utils/compare/5-v6.0.0...5-v6.0.1) (2020-05-11)
+
+### Bug Fixes
+
+-   **deeplink:** fix deeplink execution on Android ([f4a47ad](https://github.com/martinfrancois/wdio-mobile-utils/commit/f4a47ad28561ab8f0a9435868a87c9cd7dc036a8))
+
 ## [6.0.0](https://github.com/martinfrancois/wdio-mobile-utils/compare/5-v5.0.0...5-v6.0.0) (2020-05-11)
 
 ### ⚠ BREAKING CHANGES
