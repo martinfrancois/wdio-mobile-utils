@@ -1,5 +1,9 @@
 import { Selector } from './selector';
-import { UNSUPPORTED_PLATFORM_ERROR } from '../internal/utils';
+import {
+    ANDROID_SELECTOR_NULL_ERROR,
+    IOS_SELECTOR_NULL_ERROR,
+    UNSUPPORTED_PLATFORM_ERROR,
+} from '../internal/utils';
 
 const Selectors = {
     ANDROID: {
@@ -17,9 +21,17 @@ function buildSelector(selector: Selector): string {
         );
     }
     if (browser.isAndroid) {
-        return Selectors.ANDROID.UI_SELECTOR_PREFIX + selector.android();
+        const androidSelector = selector.android();
+        if (!androidSelector) {
+            throw new Error(ANDROID_SELECTOR_NULL_ERROR);
+        }
+        return Selectors.ANDROID.UI_SELECTOR_PREFIX + androidSelector;
     } else if (browser.isIOS) {
-        return Selectors.IOS.PREDICATE_PREFIX + selector.ios();
+        const iosSelector = selector.ios();
+        if (!iosSelector) {
+            throw new Error(IOS_SELECTOR_NULL_ERROR);
+        }
+        return Selectors.IOS.PREDICATE_PREFIX + iosSelector;
     }
     throw new Error(UNSUPPORTED_PLATFORM_ERROR);
 }

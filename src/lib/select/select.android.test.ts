@@ -1,5 +1,11 @@
 import { Selector } from './selector';
 import { mobile$, mobile$$ } from './select';
+import {
+    IOS_PREDICATE_ATTRIBUTES,
+    IOS_PREDICATE_COMPARATOR,
+    IosSelector,
+} from './iosSelector';
+import { ANDROID_SELECTOR_NULL_ERROR } from '../internal/utils';
 
 describe('Select', function () {
     // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
@@ -40,6 +46,19 @@ describe('Select', function () {
             expect(mock$.mock.calls.length).toBe(0);
             expect(mock$$.mock.calls.length).toBe(1);
             expect(mock$$.mock.calls[0][0]).toBe(selectorAndroid);
+        });
+
+        it('should throw an error if the Android selector is null and it is being used on the Android platform', function () {
+            const anyIosSelector = IosSelector.of(
+                IOS_PREDICATE_ATTRIBUTES.NAME,
+                IOS_PREDICATE_COMPARATOR.CONTAINS,
+                ''
+            );
+            const selector = Selector.custom(null, anyIosSelector);
+
+            expect(() => mobile$(selector)).toThrowError(
+                ANDROID_SELECTOR_NULL_ERROR
+            );
         });
     });
 });

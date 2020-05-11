@@ -1,8 +1,7 @@
 import { Selector } from './selector';
 import { Type } from './type';
 import {
-    ANDROID_SELECTOR_NULL_ERROR,
-    IOS_SELECTOR_NULL_ERROR,
+    COMBINATION_SELECTOR_NULL_ERROR,
     SELECTOR_NULL_ERROR,
 } from '../internal/utils';
 import {
@@ -17,6 +16,19 @@ import {
 
 describe('Selector', function () {
     const VALUE = 'TEST VALUE';
+
+    const anyIosSelector = IosSelector.of(
+        IOS_PREDICATE_ATTRIBUTES.NAME,
+        IOS_PREDICATE_COMPARATOR.CONTAINS,
+        ''
+    );
+    const anyAndroidSelector = AndroidSelector.of(
+        ANDROID_UISELECTOR_PROPERTIES.CLASS_NAME,
+        ''
+    );
+
+    const nullSelectorAndroid = Selector.custom(null, anyIosSelector);
+    const nullSelectorIos = Selector.custom(anyAndroidSelector, null);
 
     describe('combination selectors', function () {
         const s1 = Selector.type(Type.TEXT_FIELD);
@@ -38,6 +50,24 @@ describe('Selector', function () {
                     `(type == 'XCUIElementTypeTextField' && label == '${VALUE}')`
                 );
             });
+
+            it('should have an iOS selector of null when combining a selector with one that has an iOS selector of null', function () {
+                const combined = Selector.and(s1, nullSelectorIos);
+
+                expect(combined.ios()).toBeNull();
+            });
+
+            it('should have an Android selector of null when combining a selector with one that has an Android selector of null', function () {
+                const combined = Selector.and(nullSelectorAndroid, s1);
+
+                expect(combined.android()).toBeNull();
+            });
+
+            it('should throw an error if a selector with null on Android is combined with one that is null on iOS', function () {
+                expect(() =>
+                    Selector.and(nullSelectorAndroid, nullSelectorIos)
+                ).toThrowError(COMBINATION_SELECTOR_NULL_ERROR);
+            });
         });
 
         describe('or', function () {
@@ -53,6 +83,24 @@ describe('Selector', function () {
                 expect(combined.ios()).toBe(
                     `(type == 'XCUIElementTypeTextField' || label == '${VALUE}')`
                 );
+            });
+
+            it('should have an iOS selector of null when combining a selector with one that has an iOS selector of null', function () {
+                const combined = Selector.or(s1, nullSelectorIos);
+
+                expect(combined.ios()).toBeNull();
+            });
+
+            it('should have an Android selector of null when combining a selector with one that has an Android selector of null', function () {
+                const combined = Selector.or(nullSelectorAndroid, s1);
+
+                expect(combined.android()).toBeNull();
+            });
+
+            it('should throw an error if a selector with null on Android is combined with one that is null on iOS', function () {
+                expect(() =>
+                    Selector.or(nullSelectorAndroid, nullSelectorIos)
+                ).toThrowError(COMBINATION_SELECTOR_NULL_ERROR);
             });
         });
 
@@ -294,29 +342,6 @@ describe('Selector', function () {
     });
 
     describe('custom', function () {
-        it('should throw an error if the Android selector is null and it was accessed', function () {
-            const anyIosSelector = IosSelector.of(
-                IOS_PREDICATE_ATTRIBUTES.NAME,
-                IOS_PREDICATE_COMPARATOR.CONTAINS,
-                ''
-            );
-            const selector = Selector.custom(null, anyIosSelector);
-
-            expect(() => selector.android()).toThrowError(
-                ANDROID_SELECTOR_NULL_ERROR
-            );
-        });
-
-        it('should throw an error if the iOS selector is null and it was accessed', function () {
-            const anyAndroidSelector = AndroidSelector.of(
-                ANDROID_UISELECTOR_PROPERTIES.CLASS_NAME,
-                ''
-            );
-            const selector = Selector.custom(anyAndroidSelector, null);
-
-            expect(() => selector.ios()).toThrowError(IOS_SELECTOR_NULL_ERROR);
-        });
-
         it('should throw an error if the iOS and Android selector is null when creating a selector', function () {
             expect(() => Selector.custom(null, null)).toThrowError(
                 SELECTOR_NULL_ERROR

@@ -60,3 +60,11 @@ export const ANDROID_SELECTOR_NULL_ERROR =
  */
 export const SELECTOR_NULL_ERROR =
     'Both Android and iOS Selectors are null, please define at least a selector for one platform.';
+
+/**
+ * Represents an error implying an Selector with null as its AndroidSelector was combined with a Selector with null as IosSelector.
+ * Since this would result in a selector with null on both platforms, it wouldn't be usable on either Android or iOS.
+ * @internal
+ */
+export const COMBINATION_SELECTOR_NULL_ERROR =
+    'A selector with an Android selector of null cannot be combined with an iOS selector of null, as the resulting selector would be null on both platforms.';

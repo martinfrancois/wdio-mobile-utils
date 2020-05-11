@@ -10,16 +10,15 @@ import {
 import { Type } from './type';
 import logger from '@wdio/logger';
 import {
-    ANDROID_SELECTOR_NULL_ERROR,
-    IOS_SELECTOR_NULL_ERROR,
+    COMBINATION_SELECTOR_NULL_ERROR,
     SELECTOR_NULL_ERROR,
 } from '../internal/utils';
 
 const log = logger('Selector');
 
 export class Selector {
-    private androidSelector: string | null;
-    private iosSelector: string | null;
+    private readonly androidSelector: string | null;
+    private readonly iosSelector: string | null;
 
     private constructor(
         androidSelector: string | null,
@@ -29,9 +28,34 @@ export class Selector {
         this.iosSelector = iosSelector;
     }
 
+    /**
+     * Combines two selectors by an AND (&&) condition.
+     * @note If one of the selectors has a null selector on one platform, the resulting selector will also have null on this platform.
+     * If one of the selectors has a null selector on Android and the other has a null selector on iOS, an error will be thrown, since
+     * the resulting selector would be null.
+     * @param selector1 to be combined with an AND condition with {@code selector2}
+     * @param selector2 to be combined with an AND condition with {@code selector1}
+     */
     public static and(selector1: Selector, selector2: Selector): Selector {
-        const andAndroid = this.combineAndAndroid(selector1, selector2);
-        const andIos = '(' + selector1.ios() + ' && ' + selector2.ios() + ')';
+        let andAndroid: string | null = null;
+        let andIos: string | null = null;
+
+        const selector1Android = selector1.android();
+        const selector2Android = selector2.android();
+        if (selector1Android != null && selector2Android != null) {
+            andAndroid = this.combineAndAndroid(selector1, selector2);
+        }
+
+        const selector1Ios = selector1.ios();
+        const selector2Ios = selector2.ios();
+        if (selector1Ios != null && selector2Ios != null) {
+            andIos = '(' + selector1.ios() + ' && ' + selector2.ios() + ')';
+        }
+
+        if (!andAndroid && !andIos) {
+            throw new Error(COMBINATION_SELECTOR_NULL_ERROR);
+        }
+
         return new Selector(andAndroid, andIos);
     }
 
@@ -39,9 +63,13 @@ export class Selector {
         selector1: Selector,
         selector2: Selector
     ): string {
+        // method is only called if selector1 and selector2 are not null
+        const selector1Android = selector1.android() as string;
+        const selector2Android = selector2.android() as string;
+
         const splitOr = ';new UiSelector()';
-        const split1 = selector1.android().split(splitOr);
-        const split2 = selector2.android().split(splitOr);
+        const split1 = selector1Android.split(splitOr);
+        const split2 = selector2Android.split(splitOr);
         if (split1.length == 1 && split2.length == 1) {
             // standard case, individual selectors were not combined with an "or" condition before
             return split1[0] + split2[0];
@@ -93,17 +121,42 @@ export class Selector {
             log.error(
                 'Using multiple levels of nested OR conditions together with AND conditions can cause unexpected results on Android, please re-write the expression to only use OR conditions between the AND conditions.'
             );
-            return selector1.android() + selector2.android();
+            return selector1Android + selector2Android;
         }
     }
 
+    /**
+     * Combines two selectors with an OR (||) condition.
+     * @note If one of the selectors has a null selector on one platform, the resulting selector will also have null on this platform.
+     * If one of the selectors has a null selector on Android and the other has a null selector on iOS, an error will be thrown, since
+     * the resulting selector would be null.
+     * @param selector1 to be combined with an OR condition with {@code selector2}
+     * @param selector2 to be combined with an OR condition with {@code selector1}
+     */
     public static or(selector1: Selector, selector2: Selector): Selector {
-        const andAndroid = this.combineOrAndroid(
-            selector1.android(),
-            selector2.android()
-        );
-        const andIos = '(' + selector1.ios() + ' || ' + selector2.ios() + ')';
-        return new Selector(andAndroid, andIos);
+        let orAndroid: string | null = null;
+        let orIos: string | null = null;
+
+        const selector1Android = selector1.android();
+        const selector2Android = selector2.android();
+        if (selector1Android != null && selector2Android != null) {
+            orAndroid = this.combineOrAndroid(
+                selector1Android,
+                selector2Android
+            );
+        }
+
+        const selector1Ios = selector1.ios();
+        const selector2Ios = selector2.ios();
+        if (selector1Ios != null && selector2Ios != null) {
+            orIos = '(' + selector1Ios + ' || ' + selector2Ios + ')';
+        }
+
+        if (!orAndroid && !orIos) {
+            throw new Error(COMBINATION_SELECTOR_NULL_ERROR);
+        }
+
+        return new Selector(orAndroid, orIos);
     }
 
     private static combineOrAndroid(selector1: string, selector2: string) {
@@ -293,17 +346,11 @@ export class Selector {
         return new Selector(androidSelector, iosSelector);
     }
 
-    public android() {
-        if (!this.androidSelector) {
-            throw new Error(ANDROID_SELECTOR_NULL_ERROR);
-        }
+    public android(): string | null {
         return this.androidSelector;
     }
 
-    public ios() {
-        if (!this.iosSelector) {
-            throw new Error(IOS_SELECTOR_NULL_ERROR);
-        }
+    public ios(): string | null {
         return this.iosSelector;
     }
 }
