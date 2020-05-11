@@ -56,8 +56,7 @@ export function isAppState(
             () => {
                 return queryAppState(appId, bundleId) === state;
             },
-            timeout,
-            'App is not in state: ' + state
+            { timeout: timeout, timeoutMsg: 'App is not in state: ' + state }
         );
     } else {
         return queryAppState(appId, bundleId) === state;

@@ -30,7 +30,7 @@ function openDeeplinkAlert(timeout: number): void {
         );
         // accepting an alert on Safari was added in Appium 1.17.0, apply backward compatibility layer for older versions
         const openButton = $('~Open');
-        openButton.waitForDisplayed(timeout);
+        openButton.waitForDisplayed({ timeout: timeout });
         openButton.click();
     }
 }
@@ -75,7 +75,7 @@ function openDeeplinkIos(
     );
 
     // Wait for the url button to appear and click on it so the text field will appear
-    urlButton.waitForDisplayed(timeout);
+    urlButton.waitForDisplayed({ timeout: timeout });
     urlButton.click();
 
     const urlField = mobile$(
