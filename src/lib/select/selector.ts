@@ -9,14 +9,22 @@ import {
 } from './iosSelector';
 import { Type } from './type';
 import logger from '@wdio/logger';
+import {
+    ANDROID_SELECTOR_NULL_ERROR,
+    IOS_SELECTOR_NULL_ERROR,
+    SELECTOR_NULL_ERROR,
+} from '../internal/utils';
 
 const log = logger('Selector');
 
 export class Selector {
-    private androidSelector: string;
-    private iosSelector: string;
+    private androidSelector: string | null;
+    private iosSelector: string | null;
 
-    private constructor(androidSelector: string, iosSelector: string) {
+    private constructor(
+        androidSelector: string | null,
+        iosSelector: string | null
+    ) {
         this.androidSelector = androidSelector;
         this.iosSelector = iosSelector;
     }
@@ -266,18 +274,42 @@ export class Selector {
         );
     }
 
+    /**
+     * Allows building a custom selector for Android and iOS.
+     * @note One of the parameters {@code android} or {@code ios} may be null, in case a selector only needs to be used on one specific platform.
+     * @param android the custom selector to be used on Android
+     * @param ios the custom selector to be used on iOS
+     */
     public static custom<T, U>(
-        android: AndroidSelector<T>,
-        ios: IosSelector<U>
+        android: AndroidSelector<T> | null,
+        ios: IosSelector<U> | null
     ): Selector {
-        return new Selector(android.toString(), ios.toString());
+        if (android == null && ios == null) {
+            throw new Error(SELECTOR_NULL_ERROR);
+        }
+
+        let androidSelector: string | null = null;
+        let iosSelector: string | null = null;
+        if (android) {
+            androidSelector = android.toString();
+        }
+        if (ios) {
+            iosSelector = ios.toString();
+        }
+        return new Selector(androidSelector, iosSelector);
     }
 
     public android() {
+        if (!this.androidSelector) {
+            throw new Error(ANDROID_SELECTOR_NULL_ERROR);
+        }
         return this.androidSelector;
     }
 
     public ios() {
+        if (!this.iosSelector) {
+            throw new Error(IOS_SELECTOR_NULL_ERROR);
+        }
         return this.iosSelector;
     }
 }

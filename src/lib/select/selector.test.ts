@@ -1,5 +1,19 @@
 import { Selector } from './selector';
 import { Type } from './type';
+import {
+    ANDROID_SELECTOR_NULL_ERROR,
+    IOS_SELECTOR_NULL_ERROR,
+    SELECTOR_NULL_ERROR,
+} from '../internal/utils';
+import {
+    IOS_PREDICATE_ATTRIBUTES,
+    IOS_PREDICATE_COMPARATOR,
+    IosSelector,
+} from './iosSelector';
+import {
+    ANDROID_UISELECTOR_PROPERTIES,
+    AndroidSelector,
+} from './androidSelector';
 
 describe('Selector', function () {
     const VALUE = 'TEST VALUE';
@@ -276,6 +290,37 @@ describe('Selector', function () {
 
         it('should return the selector for iOS when ".ios()" is called', function () {
             expect(selector.ios()).toBe('enabled == 0');
+        });
+    });
+
+    describe('custom', function () {
+        it('should throw an error if the Android selector is null and it was accessed', function () {
+            const anyIosSelector = IosSelector.ios(
+                IOS_PREDICATE_ATTRIBUTES.NAME,
+                IOS_PREDICATE_COMPARATOR.CONTAINS,
+                ''
+            );
+            const selector = Selector.custom(null, anyIosSelector);
+
+            expect(() => selector.android()).toThrowError(
+                ANDROID_SELECTOR_NULL_ERROR
+            );
+        });
+
+        it('should throw an error if the iOS selector is null and it was accessed', function () {
+            const anyAndroidSelector = AndroidSelector.android(
+                ANDROID_UISELECTOR_PROPERTIES.CLASS_NAME,
+                ''
+            );
+            const selector = Selector.custom(anyAndroidSelector, null);
+
+            expect(() => selector.ios()).toThrowError(IOS_SELECTOR_NULL_ERROR);
+        });
+
+        it('should throw an error if the iOS and Android selector is null when creating a selector', function () {
+            expect(() => Selector.custom(null, null)).toThrowError(
+                SELECTOR_NULL_ERROR
+            );
         });
     });
 });

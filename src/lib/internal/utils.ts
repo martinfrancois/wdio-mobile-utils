@@ -36,3 +36,27 @@ export function isString<T>(maybeString: T): boolean {
  */
 export const UNSUPPORTED_PLATFORM_ERROR =
     'You are using an unsupported platform, only Android and iOS are supported!';
+
+/**
+ * Represents an error implying the iOS selector was accessed while being null.
+ * This is used in cases where the selector was not defined, yet it was still accessed.
+ * @internal
+ */
+export const IOS_SELECTOR_NULL_ERROR =
+    'iOS selector is null, but an attempt was made to access it on iOS. Please define a selector if you want to use it on iOS.';
+
+/**
+ * Represents an error implying the Android selector was accessed while being null.
+ * This is used in cases where the selector was not defined, yet it was still accessed.
+ * @internal
+ */
+export const ANDROID_SELECTOR_NULL_ERROR =
+    'Android selector is null, but an attempt was made to access it on Android. Please define a selector if you want to use it on Android.';
+
+/**
+ * Represents an error implying both Android and iOS Selectors used to create a selector were null.
+ * Since it doesn't make sense to not specify any selectors, this should prevent user errors.
+ * @internal
+ */
+export const SELECTOR_NULL_ERROR =
+    'Both Android and iOS Selectors are null, please define at least a selector for one platform.';
