@@ -1,6 +1,6 @@
 {
   "name": "wdio-mobile-utils",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "A cross-platform mobile end-to-end testing library for WebdriverIO.",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
