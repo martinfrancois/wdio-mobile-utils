@@ -26,3 +26,7 @@ npm install -D wdio-mobile-utils@6.0.2          # WebdriverIO v5
 
 You can find documentation for the individual methods here:
 https://martinfrancois.github.io/wdio-mobile-utils/
+
+## Usage
+
+Check out the [slides from my presentation at SauceCon Online 2020](https://github.com/martinfrancois/saucecon-2020-1-codebase-2-mobile-platforms/blob/master/SauceCon_2020_Online.pdf) for detailed information on how to use the library.
