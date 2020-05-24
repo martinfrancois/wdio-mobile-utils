@@ -27,6 +27,37 @@ npm install -D wdio-mobile-utils@6.0.2          # WebdriverIO v5
 You can find documentation for the individual methods here:
 https://martinfrancois.github.io/wdio-mobile-utils/
 
+## Mobile Selectors
+
+In cases where you cannot use `accessibilityId`s, it is recommended to use `ios predicate` for iOS and `UiSelector` for Android.
+wdio-mobile-utils provides an abstraction to build mobile selectors easily which are cross-platform.
+This means you can build your selectors using `mobile$` and `mobile$$` and wdio-mobile-utils will automatically convert this into an `ios predicate` for iOS and `UiSelector` for Android for you automatically, depending on which platform the test is running on.
+
+To select **one element**, use `mobile$`, which is the equivalent to `$` in WebdriverIO.
+To select **all elements** use `mobile$$`, which is the equivalent to `$$` in WebdriverIO.
+
+For example, to select a **button** with the text `Login` which works on **both Android and iOS**, we can use the following selector with wdio-mobile-utils:
+
+```javascript
+// compact form
+mobile$(Selector.and(Selector.type(Type.BUTTON), Selector.text('Login')));
+
+// long form
+mobile$(Selector.and(Selector.type(Type.BUTTON), Selector.text('Login')));
+```
+
+Internally, it will convert this into the following `ios predicate` and `UiSelector` selectors, depending on the platform the test is running on:
+
+```javascript
+// UiSelector
+$('android=new UiSelector().className("android.widget.Button").text("Login")');
+
+// ios predicate
+$("-ios predicate string:type == 'XCUIElementTypeButton' && label == 'Login'");
+```
+
+You can find all of the different `Selector`s you can use in the [TSDoc for Selector](https://martinfrancois.github.io/wdio-mobile-utils/classes/selector.html).
+
 ## Usage
 
 Check out the [slides from my presentation at SauceCon Online 2020](https://github.com/martinfrancois/saucecon-2020-1-codebase-2-mobile-platforms/blob/master/SauceCon_2020_Online.pdf) for detailed information on how to use the library.
