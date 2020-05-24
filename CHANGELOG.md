@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [7.0.2](https://github.com/martinfrancois/wdio-mobile-utils/compare/5-v6.0.2...5-v7.0.2) (2020-05-24)
+
+### ⚠ BREAKING CHANGES
+
+-   **selector:** There is no reason to use the methods `android` and `ios` on `Selector` as part of the public API, which is why they were marked as internal explicitly and renamed to `_android` and `_ios` respectively.
+    This should make it easier to not use the API in the wrong way.
+    No migration steps should be necessary for the reasons mentioned above.
+    If you have previously been using those methods, remember to wrap the `Selector` in either `mobile$` or `mobile$$`.
+
+Signed-off-by: martinfrancois <f.martin@fastmail.com>
+(cherry picked from commit a22e116c8577c0bbbc4535a6801d616dc6edf861)
+
+-   **selector:** explicitly mark methods `ios` and `android` as internal and private ([21ce11a](https://github.com/martinfrancois/wdio-mobile-utils/commit/21ce11a63ee4d8192d5a6e8287a6f8a72648fef8))
+
 ### [6.0.2](https://github.com/martinfrancois/wdio-mobile-utils/compare/5-v6.0.1...5-v6.0.2) (2020-05-12)
 
 ### [6.0.1](https://github.com/martinfrancois/wdio-mobile-utils/compare/5-v6.0.0...5-v6.0.1) (2020-05-11)
