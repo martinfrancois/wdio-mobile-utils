@@ -20,6 +20,7 @@ const log = logger('Deeplink');
 
 /**
  * Accepts an alert in Safari which appears upon opening a deeplink, tapping the "Open" button.
+ * @internal
  */
 function openDeeplinkAlert(timeout: number): void {
     try {
@@ -35,6 +36,9 @@ function openDeeplinkAlert(timeout: number): void {
     }
 }
 
+/**
+ * @internal
+ */
 function openDeeplinkIos(
     deeplink: string,
     bundleId: string,
@@ -108,6 +112,9 @@ function openDeeplinkIos(
     }
 }
 
+/**
+ * @internal
+ */
 function openDeeplinkAndroid(path: string, appId: string): void {
     log.info('Opening Deeplink on Android');
     browser.closeApp();

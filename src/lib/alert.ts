@@ -10,6 +10,9 @@ import {
     IosSelector,
 } from './select/iosSelector';
 
+/**
+ * @internal
+ */
 const SELECTORS = {
     ANDROID: {
         RESOURCE_ID: 'android:id/alertTitle',
@@ -19,6 +22,9 @@ const SELECTORS = {
     },
 };
 
+/**
+ * @internal
+ */
 function alertElement(): WebdriverIO.Element {
     return mobile$(
         Selector.custom(

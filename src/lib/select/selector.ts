@@ -14,6 +14,9 @@ import {
     SELECTOR_NULL_ERROR,
 } from '../internal/utils';
 
+/**
+ * @internal
+ */
 const log = logger('Selector');
 
 export class Selector {
