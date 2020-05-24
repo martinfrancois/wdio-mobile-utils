@@ -43,6 +43,7 @@ function alertElement(): WebdriverIO.Element {
 
 /**
  * Waits for a native alert to be shown.
+ * @category Alert
  */
 export function waitForAlertDisplayed(): WebdriverIO.Element {
     const element = alertElement();
@@ -52,6 +53,7 @@ export function waitForAlertDisplayed(): WebdriverIO.Element {
 
 /**
  * Returns whether or not a native alert is shown.
+ * @category Alert
  */
 export function isAlertDisplayed(): boolean {
     return alertElement().isDisplayed();
@@ -60,6 +62,7 @@ export function isAlertDisplayed(): boolean {
 /**
  * Accepts the alert in a cross-platform way.
  * For example, this would press the "OK" or "Yes" button.
+ * @category Alert
  */
 export function acceptAlert(): void {
     if (browser.isAndroid) {
@@ -75,6 +78,7 @@ export function acceptAlert(): void {
 /**
  * Dismisses the alert in a cross-platform way.
  * For example, this would press the "Close", "Cancel" or "No" button.
+ * @category Alert
  */
 export function dismissAlert(): void {
     if (browser.isAndroid) {
@@ -91,6 +95,7 @@ export function dismissAlert(): void {
  * Returns the text of an alert.
  * @param wait whether to wait for an alert to appear or not
  * @returns the text of the alert or {@code null} if no alert is displayed
+ * @category Alert
  */
 export function getAlertText(wait: false): string | null {
     if (wait) {

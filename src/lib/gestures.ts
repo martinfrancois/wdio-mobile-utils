@@ -3,6 +3,9 @@
  */
 let SCREEN_SIZE: WebDriver.RectReturn | undefined;
 
+/**
+ * @category Gesture
+ */
 export type Coordinate = { x: number; y: number };
 
 /**
@@ -80,6 +83,7 @@ function getDeviceScreenCoordinates(
  * const from = { x: 50, y:50 }
  * const to = { x: 25, y:50 }
  * ```
+ * @category Gesture
  */
 export function swipe(from: Coordinate, to: Coordinate): void {
     browser.touchPerform([
@@ -116,6 +120,7 @@ export function swipe(from: Coordinate, to: Coordinate): void {
  * const from = { x: 50, y:50 }
  * const to = { x: 25, y:50 }
  * ```
+ * @category Gesture
  */
 export function swipeOnPercentage(from: Coordinate, to: Coordinate): void {
     SCREEN_SIZE = SCREEN_SIZE || browser.getWindowRect();
@@ -128,6 +133,7 @@ export function swipeOnPercentage(from: Coordinate, to: Coordinate): void {
  * Swipes up based on a percentage.
  * @param {number} percentage between 0 and 1
  * @author Wim Selles | wswebcreation
+ * @category Gesture
  */
 export function swipeUp(percentage = 1): void {
     swipeOnPercentage(
@@ -144,6 +150,7 @@ export function swipeUp(percentage = 1): void {
  * @param {number} maxScrolls maximum amount of scrolls to perform until the element is visible
  * @param {number} amount current amount of scrolls
  * @author Wim Selles | wswebcreation
+ * @category Gesture
  */
 export function checkIfDisplayedWithScrollDown(
     element: WebdriverIO.Element,
@@ -167,6 +174,7 @@ export function checkIfDisplayedWithScrollDown(
  * Swipe down based on a percentage.
  * @param {number} percentage between 0 and 1
  * @author Wim Selles | wswebcreation
+ * @category Gesture
  */
 export function swipeDown(percentage = 1): void {
     swipeOnPercentage(
@@ -179,6 +187,7 @@ export function swipeDown(percentage = 1): void {
  * Swipes left based on a percentage.
  * @param {number} percentage between 0 and 1
  * @author Wim Selles | wswebcreation
+ * @category Gesture
  */
 export function swipeLeft(percentage = 1): void {
     swipeOnPercentage(
@@ -191,6 +200,7 @@ export function swipeLeft(percentage = 1): void {
  * Swipes right based on a percentage.
  * @param {number} percentage between 0 and 1
  * @author Wim Selles | wswebcreation
+ * @category Gesture
  */
 export function swipeRight(percentage = 1): void {
     swipeOnPercentage(
@@ -211,6 +221,7 @@ function calculateHorizontalSwipeOffset(element: WebdriverIO.Element): number {
 /**
  * Swipes right on the {@code element}.
  * @param element to be swiped on
+ * @category Gesture
  */
 export function swipeRightOnElement(element: WebdriverIO.Element): void {
     /**
@@ -232,6 +243,7 @@ export function swipeRightOnElement(element: WebdriverIO.Element): void {
 /**
  * Swipes left on the {@code element}.
  * @param element to be swiped on
+ * @category Gesture
  */
 export function swipeLeftOnElement(element: WebdriverIO.Element): void {
     /**

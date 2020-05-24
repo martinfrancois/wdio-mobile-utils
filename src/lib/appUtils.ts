@@ -20,6 +20,7 @@ export enum APP_RUNNING_STATE {
  * @param {string} bundleId bundle id of the app (iOS)
  * @returns {APP_RUNNING_STATE} the current app's running state
  * @see http://appium.io/docs/en/commands/device/app/app-state/
+ * @category App Utility
  */
 export function queryAppState(
     appId?: string,
@@ -43,6 +44,7 @@ export function queryAppState(
  * @param {string} appId        ID of the app (Android)
  * @param {string} bundleId     bundle id of the app (iOS)
  * @param {number} timeout      how long to wait until the state is met
+ * @category App Utility
  */
 export function isAppState(
     state: APP_RUNNING_STATE,
@@ -68,6 +70,7 @@ export function isAppState(
  *
  * @param {boolean} state       Which state should be checked for
  * @param {boolean} wait        If set to true, will wait for the app to be running.
+ * @category App Utility
  */
 export function isBrowserAppState(
     state: APP_RUNNING_STATE,
@@ -83,6 +86,7 @@ export function isBrowserAppState(
 
 /**
  * Opens Safari and waits until it is running.
+ * @category App Utility
  */
 export function openSafari(): void {
     browser.waitUntil(() => {
@@ -97,6 +101,7 @@ export function openSafari(): void {
  * @param {boolean} wait whether or not the start of the app should be awaited
  * @param {string} appId ID of the app (Android)
  * @param {string} bundleId bundle id of the app (iOS)
+ * @category App Utility
  */
 export function openApp(wait = false, appId?: string, bundleId?: string): void {
     browser.waitUntil(() => {
