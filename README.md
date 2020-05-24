@@ -58,6 +58,45 @@ $("-ios predicate string:type == 'XCUIElementTypeButton' && label == 'Login'");
 
 You can find all of the different `Selector`s you can use in the [TSDoc for Selector](https://martinfrancois.github.io/wdio-mobile-utils/classes/selector.html).
 
+### Custom Selectors
+
+If you can't find a selector you're looking for, if it's generic enough to be useful for others, consider contributing with a [PR here](https://github.com/martinfrancois/wdio-mobile-utils/pulls).
+
+If you need to use a very specific selector or one that may only work on one platform and you still want to make use of the easy fluent API of wdio-mobile-utils, you can use a custom selector.
+
+For example:
+
+```javascript
+mobile$(
+    Selector.custom(
+        AndroidSelector.of(ANDROID_UISELECTOR_PROPERTIES.RESOURCE_ID, 'URL'),
+        IosSelector.of(
+            IOS_PREDICATE_ATTRIBUTES.VALUE,
+            IOS_PREDICATE_COMPARATOR.EQUALS,
+            'URL'
+        )
+    )
+);
+```
+
+To create a selector which only works on one platform, set one of the selectors to `null`, like so:
+
+```javascript
+mobile$(
+    Selector.custom(
+        null, // no selector on Android
+        IosSelector.of(
+            IOS_PREDICATE_ATTRIBUTES.RECT,
+            IOS_PREDICATE_COMPARATOR.EQUALS,
+            'URL'
+        )
+    )
+);
+```
+
+Note that when creating a selector which only works on one platform (for example, only for iOS), if a test is executed on the other platform (for example, Android), it will throw an error.
+This also applies in cases where a selector which only works on one platform is combined with a cross-platform selector, which is used on the other platform.
+
 ## Usage
 
 Check out the [recording](http://saucecon.com/agenda-2020?agendaPath=session/251027) and the [slides](https://github.com/martinfrancois/saucecon-2020-1-codebase-2-mobile-platforms/blob/master/SauceCon_2020_Online.pdf) of my presentation at SauceCon Online 2020 for detailed information on how to use the library.
