@@ -36,6 +36,33 @@ This means you can build your selectors using `mobile$` and `mobile$$` and wdio-
 To select **one element**, use `mobile$`, which is the equivalent to `$` in WebdriverIO.
 To select **all elements** use `mobile$$`, which is the equivalent to `$$` in WebdriverIO.
 
+You can find all of the different `Selector`s you can use in the [TSDoc for Selector](https://martinfrancois.github.io/wdio-mobile-utils/classes/selector.html).
+
+For example, to select a **button** which works on **both Android and iOS**, we can use the following selector with wdio-mobile-utils:
+
+```javascript
+mobile$(Selector.type(Type.BUTTON));
+```
+
+Internally, it will convert this into the following `ios predicate` and `UiSelector` selectors, depending on the platform the test is running on:
+
+```javascript
+// UiSelector
+$('android=new UiSelector().className("android.widget.Button")');
+
+// ios predicate
+$("-ios predicate string:type == 'XCUIElementTypeButton'");
+```
+
+### Combining selectors
+
+You can also use multiple selectors together, combining them either with an `AND` (`&&`) or an `OR` (`||`) condition:
+
+```javascript
+Selectors.and(selector1, selector2); // AND (&&) condition
+Selectors.or(selector1, selector2); // OR (||) condition
+```
+
 For example, to select a **button** with the text `Login` which works on **both Android and iOS**, we can use the following selector with wdio-mobile-utils:
 
 <!-- prettier-ignore-start -->
@@ -62,8 +89,6 @@ $('android=new UiSelector().className("android.widget.Button").text("Login")');
 // ios predicate
 $("-ios predicate string:type == 'XCUIElementTypeButton' && label == 'Login'");
 ```
-
-You can find all of the different `Selector`s you can use in the [TSDoc for Selector](https://martinfrancois.github.io/wdio-mobile-utils/classes/selector.html).
 
 ### Custom Selectors
 
