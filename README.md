@@ -33,7 +33,7 @@ npm install -D wdio-mobile-utils@7.0.3          # WebdriverIO v5
 ## TSDoc
 
 You can find documentation for the individual methods here:
-https://martinfrancois.github.io/wdio-mobile-utils/
+https://martinfrancois.github.io/wdio-mobile-utils/globals.html
 
 ## Mobile Selectors
 
