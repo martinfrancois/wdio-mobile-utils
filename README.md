@@ -18,8 +18,8 @@ Releases for WebdriverIO v5 are released on the `v5` branch, while releases for 
 Check the [releases here](https://github.com/martinfrancois/wdio-mobile-utils/releases), the releases for WebdriverIO v6 are prefixed with `6-`, while releases for WebdriverIO v5 are prefixed with `5-`.
 
 ```
-npm install -D wdio-mobile-utils@7.0.1          # WebdriverIO v6
-npm install -D wdio-mobile-utils@6.0.2          # WebdriverIO v5
+npm install -D wdio-mobile-utils@8.0.0          # WebdriverIO v6
+npm install -D wdio-mobile-utils@7.0.0          # WebdriverIO v5
 ```
 
 ## Table of Contents
