@@ -79,8 +79,8 @@
 				</a>
 				<p>Releases for WebdriverIO v5 are released on the <code>v5</code> branch, while releases for WebdriverIO v6 are releases on the <code>master</code> branch.</p>
 				<p>Check the <a href="https://github.com/martinfrancois/wdio-mobile-utils/releases">releases here</a>, the releases for WebdriverIO v6 are prefixed with <code>6-</code>, while releases for WebdriverIO v5 are prefixed with <code>5-</code>.</p>
-				<pre><code><span class="hljs-attribute">npm</span> install -D wdio-mobile-utils@<span class="hljs-number">8</span>.<span class="hljs-number">0</span>.<span class="hljs-number">1</span>         # WebdriverIO v<span class="hljs-number">6</span>
-<span class="hljs-attribute">npm</span> install -D wdio-mobile-utils@<span class="hljs-number">7</span>.<span class="hljs-number">0</span>.<span class="hljs-number">2</span>         # WebdriverIO v<span class="hljs-number">5</span></code></pre>
+				<pre><code><span class="hljs-attribute">npm</span> install -D wdio-mobile-utils@<span class="hljs-number">8</span>.<span class="hljs-number">0</span>.<span class="hljs-number">2</span>          # WebdriverIO v<span class="hljs-number">6</span>
+<span class="hljs-attribute">npm</span> install -D wdio-mobile-utils@<span class="hljs-number">7</span>.<span class="hljs-number">0</span>.<span class="hljs-number">3</span>          # WebdriverIO v<span class="hljs-number">5</span></code></pre>
 				<a href="#table-of-contents" id="table-of-contents" style="color: inherit; text-decoration: none;">
 					<h2>Table of Contents</h2>
 				</a>
@@ -119,8 +119,8 @@ $(<span class="hljs-string">"-ios predicate string:type == 'XCUIElementTypeButto
 					<h3>Combining selectors</h3>
 				</a>
 				<p>You can also use multiple selectors together, combining them either with an <code>AND</code> (<code>&amp;&amp;</code>) or an <code>OR</code> (<code>||</code>) condition:</p>
-				<pre><code class="language-javascript">Selectors.and(selector1, selector2); <span class="hljs-comment">// AND (&amp;&amp;) condition</span>
-Selectors.or(selector1, selector2); <span class="hljs-comment">// OR (||) condition</span></code></pre>
+				<pre><code class="language-javascript">Selector.and(selector1, selector2); <span class="hljs-comment">// AND (&amp;&amp;) condition</span>
+Selector.or(selector1, selector2); <span class="hljs-comment">// OR (||) condition</span></code></pre>
 				<p>For example, to select a <strong>button</strong> with the text <code>Login</code> which works on <strong>both Android and iOS</strong>, we can use the following selector with wdio-mobile-utils:</p>
 				<!-- prettier-ignore-start -->
 				<pre><code class="language-javascript"><span class="hljs-comment">// compact form</span>
