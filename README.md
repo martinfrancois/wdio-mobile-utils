@@ -67,8 +67,8 @@ $("-ios predicate string:type == 'XCUIElementTypeButton'");
 You can also use multiple selectors together, combining them either with an `AND` (`&&`) or an `OR` (`||`) condition:
 
 ```javascript
-Selectors.and(selector1, selector2); // AND (&&) condition
-Selectors.or(selector1, selector2); // OR (||) condition
+Selector.and(selector1, selector2); // AND (&&) condition
+Selector.or(selector1, selector2); // OR (||) condition
 ```
 
 For example, to select a **button** with the text `Login` which works on **both Android and iOS**, we can use the following selector with wdio-mobile-utils:
