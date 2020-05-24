@@ -60,4 +60,4 @@ You can find all of the different `Selector`s you can use in the [TSDoc for Sele
 
 ## Usage
 
-Check out the [slides from my presentation at SauceCon Online 2020](https://github.com/martinfrancois/saucecon-2020-1-codebase-2-mobile-platforms/blob/master/SauceCon_2020_Online.pdf) for detailed information on how to use the library.
+Check out the [recording](http://saucecon.com/agenda-2020?agendaPath=session/251027) and the [slides](https://github.com/martinfrancois/saucecon-2020-1-codebase-2-mobile-platforms/blob/master/SauceCon_2020_Online.pdf) of my presentation at SauceCon Online 2020 for detailed information on how to use the library.
