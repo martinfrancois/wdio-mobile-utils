@@ -1,9 +1,13 @@
+/**
+ * @internal
+ */
 let SCREEN_SIZE: WebDriver.RectReturn | undefined;
 
-type Coordinate = { x: number; y: number };
+export type Coordinate = { x: number; y: number };
 
 /**
  * These values are percentages of the screen.
+ * @internal
  */
 const SWIPE_DIRECTION = {
     down: {
@@ -24,6 +28,9 @@ const SWIPE_DIRECTION = {
     },
 };
 
+/**
+ * @internal
+ */
 const CORNER_OFFSET = 50;
 
 /**
@@ -32,6 +39,7 @@ const CORNER_OFFSET = 50;
  * @param {number} percentage to scale the coordinate
  * @return {Coordinate} which was scaled by the percentage
  * @author Wim Selles | wswebcreation
+ * @internal
  */
 function calculateXY(coordinate: Coordinate, percentage: number): Coordinate {
     return {
@@ -46,6 +54,7 @@ function calculateXY(coordinate: Coordinate, percentage: number): Coordinate {
  * @param {Coordinate} coordinate like { x: 50, y: 50 }
  * @return {Coordinate} based on the screen size
  * @author Wim Selles | wswebcreation
+ * @internal
  */
 function getDeviceScreenCoordinates(
     screenSize: WebDriver.RectReturn,
@@ -193,6 +202,7 @@ export function swipeRight(percentage = 1): void {
 /**
  * Calculates the horizontal offset for the swipe based on the element's width.
  * @param element to take as a reference for the width
+ * @internal
  */
 function calculateHorizontalSwipeOffset(element: WebdriverIO.Element): number {
     return element.getSize().width / 2;

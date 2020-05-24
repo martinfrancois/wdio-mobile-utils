@@ -5,6 +5,9 @@ import {
     UNSUPPORTED_PLATFORM_ERROR,
 } from '../internal/utils';
 
+/**
+ * @internal
+ */
 const Selectors = {
     ANDROID: {
         UI_SELECTOR_PREFIX: 'android=new UiSelector()',
@@ -14,6 +17,9 @@ const Selectors = {
     },
 };
 
+/**
+ * @internal
+ */
 function buildSelector(selector: Selector): string {
     if (!selector) {
         throw new Error(
