@@ -38,13 +38,20 @@ To select **all elements** use `mobile$$`, which is the equivalent to `$$` in We
 
 For example, to select a **button** with the text `Login` which works on **both Android and iOS**, we can use the following selector with wdio-mobile-utils:
 
+<!-- prettier-ignore-start -->
 ```javascript
 // compact form
 mobile$(Selector.and(Selector.type(Type.BUTTON), Selector.text('Login')));
 
 // long form
-mobile$(Selector.and(Selector.type(Type.BUTTON), Selector.text('Login')));
+mobile$(
+    Selector.and(
+       Selector.type(Type.BUTTON),
+       Selector.text('Login')
+    )
+);
 ```
+<!-- prettier-ignore-end -->
 
 Internally, it will convert this into the following `ios predicate` and `UiSelector` selectors, depending on the platform the test is running on:
 
@@ -66,33 +73,29 @@ If you need to use a very specific selector or one that may only work on one pla
 
 For example:
 
+<!-- prettier-ignore-start -->
 ```javascript
 mobile$(
     Selector.custom(
         AndroidSelector.of(ANDROID_UISELECTOR_PROPERTIES.RESOURCE_ID, 'URL'),
-        IosSelector.of(
-            IOS_PREDICATE_ATTRIBUTES.VALUE,
-            IOS_PREDICATE_COMPARATOR.EQUALS,
-            'URL'
-        )
+        IosSelector.of(IOS_PREDICATE_ATTRIBUTES.VALUE, IOS_PREDICATE_COMPARATOR.EQUALS, 'URL')
     )
 );
 ```
+<!-- prettier-ignore-end -->
 
 To create a selector which only works on one platform, set one of the selectors to `null`, like so:
 
+<!-- prettier-ignore-start -->
 ```javascript
 mobile$(
     Selector.custom(
         null, // no selector on Android
-        IosSelector.of(
-            IOS_PREDICATE_ATTRIBUTES.RECT,
-            IOS_PREDICATE_COMPARATOR.EQUALS,
-            'URL'
-        )
+        IosSelector.of(IOS_PREDICATE_ATTRIBUTES.RECT, IOS_PREDICATE_COMPARATOR.EQUALS, 'URL')
     )
 );
 ```
+<!-- prettier-ignore-end -->
 
 Note that when creating a selector which only works on one platform (for example, only for iOS), if a test is executed on the other platform (for example, Android), it will throw an error.
 This also applies in cases where a selector which only works on one platform is combined with a cross-platform selector, which is used on the other platform.
