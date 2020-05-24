@@ -22,6 +22,14 @@ npm install -D wdio-mobile-utils@7.0.1          # WebdriverIO v6
 npm install -D wdio-mobile-utils@6.0.2          # WebdriverIO v5
 ```
 
+## Table of Contents
+
+-   [TSDoc](#tsdoc)
+-   [Mobile Selectors](#mobile-selectors)
+    -   [Combining selectors](#combining-selectors)
+    -   [Custom Selectors](#custom-selectors)
+-   [Usage in Action](#usage-in-action)
+
 ## TSDoc
 
 You can find documentation for the individual methods here:
@@ -125,6 +133,6 @@ mobile$(
 Note that when creating a selector which only works on one platform (for example, only for iOS), if a test is executed on the other platform (for example, Android), it will throw an error.
 This also applies in cases where a selector which only works on one platform is combined with a cross-platform selector, which is used on the other platform.
 
-## Usage
+## Usage in Action
 
 Check out the [recording](http://saucecon.com/agenda-2020?agendaPath=session/251027) and the [slides](https://github.com/martinfrancois/saucecon-2020-1-codebase-2-mobile-platforms/blob/master/SauceCon_2020_Online.pdf) of my presentation at SauceCon Online 2020 for detailed information on how to use the library.
