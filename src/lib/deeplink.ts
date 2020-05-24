@@ -134,6 +134,7 @@ function openDeeplinkAndroid(path: string, appId: string): void {
  * @param {string} appId ID of the app (Android)
  * @param {string} bundleId bundle id of the app (iOS)
  * @param {number} timeout how long to wait in each step of the process until the deeplink has been opened
+ * @category Deeplink
  */
 export function openDeeplink(
     path: string,

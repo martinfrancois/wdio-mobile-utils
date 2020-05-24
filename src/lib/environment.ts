@@ -1,5 +1,6 @@
 /**
  * Returns whether the test is currently running on an iOS Simulator or not.
+ * @category Environment
  */
 export function isIosSimulator(): boolean {
     /**

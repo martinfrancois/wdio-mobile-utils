@@ -2,6 +2,7 @@
  * Removes, if present, the ~ character in the beginning of a string.
  * This is useful in cases where the accessibilityId can be passed in by the developer, but needs to be without a ~ in front. This makes
  * sure even if the accessibilityId contains a ~ that is not allowed, that it's properly removed, providing greater convenience.
+ * @category General Utility
  */
 export function removeStartingTilde(key: string): string {
     if (key.startsWith('~')) {
@@ -16,6 +17,7 @@ export function removeStartingTilde(key: string): string {
  *
  * @param {WebdriverIO.Element} element of which to get the accessibilityId
  * @return {string} the accessibilityId of {@code element}
+ * @category General Utility
  */
 export function getAccessibilityIdOfElement(
     element: WebdriverIO.Element

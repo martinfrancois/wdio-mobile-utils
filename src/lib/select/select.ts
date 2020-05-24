@@ -42,10 +42,26 @@ function buildSelector(selector: Selector): string {
     throw new Error(UNSUPPORTED_PLATFORM_ERROR);
 }
 
+/**
+ * Selects one element on mobile platforms in a cross-platform way.
+ * Works in the same way as {@link $} in WebdriverIO.
+ * Uses {@code UiSelector} on Android and {@code ios predicate} on iOS.
+ *
+ * @param selector to use
+ * @category Select
+ */
 export function mobile$(selector: Selector): WebdriverIO.Element {
     return $(buildSelector(selector));
 }
 
+/**
+ * Selects all elements on mobile platforms in a cross-platform way.
+ * Works in the same way as {@link $$} in WebdriverIO.
+ * Uses {@code UiSelector} on Android and {@code ios predicate} on iOS.
+ *
+ * @param selector to use
+ * @category Select
+ */
 export function mobile$$(selector: Selector): WebdriverIO.ElementArray {
     return $$(buildSelector(selector));
 }
