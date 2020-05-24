@@ -59,7 +59,7 @@
     "@typescript-eslint/parser": "2.32.0",
     "@wdio/logger": "5.16.10",
     "@wdio/sync": "5.20.1",
-    "codecov": "3.6.5",
+    "codecov": "3.7.0",
     "cz-conventional-changelog": "3.2.0",
     "eslint": "7.0.0",
     "eslint-config-prettier": "6.11.0",
