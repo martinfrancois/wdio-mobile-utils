@@ -21,13 +21,13 @@ function buildSelector(selector: Selector): string {
         );
     }
     if (browser.isAndroid) {
-        const androidSelector = selector.android();
+        const androidSelector = selector._android();
         if (!androidSelector) {
             throw new Error(ANDROID_SELECTOR_NULL_ERROR);
         }
         return Selectors.ANDROID.UI_SELECTOR_PREFIX + androidSelector;
     } else if (browser.isIOS) {
-        const iosSelector = selector.ios();
+        const iosSelector = selector._ios();
         if (!iosSelector) {
             throw new Error(IOS_SELECTOR_NULL_ERROR);
         }

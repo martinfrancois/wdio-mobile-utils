@@ -39,14 +39,14 @@ describe('Selector', function () {
         describe('and', function () {
             const combined = Selector.and(s1, s2);
 
-            it('should return the selector for Android when ".android()" is called', function () {
-                expect(combined.android()).toBe(
+            it('should return the selector for Android when "._android()" is called', function () {
+                expect(combined._android()).toBe(
                     `.className("android.widget.EditText").text("${VALUE}")`
                 );
             });
 
-            it('should return the selector for iOS when ".ios()" is called', function () {
-                expect(combined.ios()).toBe(
+            it('should return the selector for iOS when "._ios()" is called', function () {
+                expect(combined._ios()).toBe(
                     `(type == 'XCUIElementTypeTextField' && label == '${VALUE}')`
                 );
             });
@@ -54,13 +54,13 @@ describe('Selector', function () {
             it('should have an iOS selector of null when combining a selector with one that has an iOS selector of null', function () {
                 const combined = Selector.and(s1, nullSelectorIos);
 
-                expect(combined.ios()).toBeNull();
+                expect(combined._ios()).toBeNull();
             });
 
             it('should have an Android selector of null when combining a selector with one that has an Android selector of null', function () {
                 const combined = Selector.and(nullSelectorAndroid, s1);
 
-                expect(combined.android()).toBeNull();
+                expect(combined._android()).toBeNull();
             });
 
             it('should throw an error if a selector with null on Android is combined with one that is null on iOS', function () {
@@ -73,14 +73,14 @@ describe('Selector', function () {
         describe('or', function () {
             const combined = Selector.or(s1, s2);
 
-            it('should return the selector for Android when ".android()" is called', function () {
-                expect(combined.android()).toBe(
+            it('should return the selector for Android when "._android()" is called', function () {
+                expect(combined._android()).toBe(
                     `.className("android.widget.EditText");new UiSelector().text("${VALUE}")`
                 );
             });
 
-            it('should return the selector for iOS when ".ios()" is called', function () {
-                expect(combined.ios()).toBe(
+            it('should return the selector for iOS when "._ios()" is called', function () {
+                expect(combined._ios()).toBe(
                     `(type == 'XCUIElementTypeTextField' || label == '${VALUE}')`
                 );
             });
@@ -88,13 +88,13 @@ describe('Selector', function () {
             it('should have an iOS selector of null when combining a selector with one that has an iOS selector of null', function () {
                 const combined = Selector.or(s1, nullSelectorIos);
 
-                expect(combined.ios()).toBeNull();
+                expect(combined._ios()).toBeNull();
             });
 
             it('should have an Android selector of null when combining a selector with one that has an Android selector of null', function () {
                 const combined = Selector.or(nullSelectorAndroid, s1);
 
-                expect(combined.android()).toBeNull();
+                expect(combined._android()).toBeNull();
             });
 
             it('should throw an error if a selector with null on Android is combined with one that is null on iOS', function () {
@@ -111,14 +111,14 @@ describe('Selector', function () {
              * is equivalent to
              * (s1 && s2) || (s3 && s2)
              */
-            it('should return the selector for Android when ".android()" is called', function () {
-                expect(combined.android()).toBe(
+            it('should return the selector for Android when "._android()" is called', function () {
+                expect(combined._android()).toBe(
                     `.className("android.widget.EditText").text("${VALUE}");new UiSelector().className("android.widget.Button").text("${VALUE}")`
                 );
             });
 
-            it('should return the selector for iOS when ".ios()" is called', function () {
-                expect(combined.ios()).toBe(
+            it('should return the selector for iOS when "._ios()" is called', function () {
+                expect(combined._ios()).toBe(
                     `((type == 'XCUIElementTypeTextField' || type == 'XCUIElementTypeButton') && label == '${VALUE}')`
                 );
             });
@@ -127,14 +127,14 @@ describe('Selector', function () {
         describe('or & and', function () {
             const combined = Selector.or(Selector.and(s1, s3), s2);
 
-            it('should return the selector for Android when ".android()" is called', function () {
-                expect(combined.android()).toBe(
+            it('should return the selector for Android when "._android()" is called', function () {
+                expect(combined._android()).toBe(
                     `.className("android.widget.EditText").className("android.widget.Button");new UiSelector().text("${VALUE}")`
                 );
             });
 
-            it('should return the selector for iOS when ".ios()" is called', function () {
-                expect(combined.ios()).toBe(
+            it('should return the selector for iOS when "._ios()" is called', function () {
+                expect(combined._ios()).toBe(
                     `((type == 'XCUIElementTypeTextField' && type == 'XCUIElementTypeButton') || label == '${VALUE}')`
                 );
             });
@@ -148,7 +148,7 @@ describe('Selector', function () {
              */
             it('s2 && (s1 || s3) => (s2 && s1) || (s2 && s3)', function () {
                 const combined = Selector.and(s2, Selector.or(s1, s3));
-                expect(combined.android()).toBe(
+                expect(combined._android()).toBe(
                     `.text("${VALUE}").className("android.widget.EditText");new UiSelector().text("${VALUE}").className("android.widget.Button")`
                 );
             });
@@ -163,7 +163,7 @@ describe('Selector', function () {
                     Selector.or(s1, s2),
                     Selector.or(s3, s4)
                 );
-                expect(combined.android()).toBe(
+                expect(combined._android()).toBe(
                     '.className("android.widget.EditText").className("android.widget.Button");' + // (s1 && s3) ||
                     'new UiSelector().className("android.widget.EditText").enabled(true);' + // (s1 && s4) ||
                     `new UiSelector().text("${VALUE}").className("android.widget.Button");` + // (s2 && s3) ||
@@ -176,7 +176,7 @@ describe('Selector', function () {
                     Selector.and(s1, s2),
                     Selector.and(s3, s4)
                 );
-                expect(combined.android()).toBe(
+                expect(combined._android()).toBe(
                     `.className("android.widget.EditText").text("${VALUE}");` + // (s1 && s2) ||
                         'new UiSelector().className("android.widget.Button").enabled(true)' // (s3 && s4)
                 );
@@ -193,7 +193,7 @@ describe('Selector', function () {
                         Selector.and(Selector.and(s1, s2), Selector.or(s1, s2))
                     )
                 );
-                expect(combined.android()).toBe(
+                expect(combined._android()).toBe(
                     `.className("android.widget.EditText").text("${VALUE}");new UiSelector().className("android.widget.EditText");new UiSelector().text("${VALUE}");new UiSelector().className("android.widget.EditText").text("${VALUE}").className("android.widget.EditText");new UiSelector().className("android.widget.EditText").text("${VALUE}").text("${VALUE}").className("android.widget.EditText").text("${VALUE}");new UiSelector().className("android.widget.EditText");new UiSelector().text("${VALUE}");new UiSelector().className("android.widget.EditText").text("${VALUE}").className("android.widget.EditText");new UiSelector().className("android.widget.EditText").text("${VALUE}").text("${VALUE}")`
                 );
             });
@@ -210,10 +210,10 @@ describe('Selector', function () {
             'should return type selector with className "$androidClassName" for Android and type "$iosType" for iOS for enum type "$type"',
             ({ type, androidClassName, iosType }) => {
                 const selector = Selector.type(type);
-                expect(selector.android()).toBe(
+                expect(selector._android()).toBe(
                     `.className("${androidClassName}")`
                 );
-                expect(selector.ios()).toBe(`type == '${iosType}'`);
+                expect(selector._ios()).toBe(`type == '${iosType}'`);
             }
         );
 
@@ -229,115 +229,117 @@ describe('Selector', function () {
     describe('text', function () {
         const selector = Selector.text(VALUE);
 
-        it('should return the selector for Android when ".android()" is called', function () {
-            expect(selector.android()).toBe(`.text("${VALUE}")`);
+        it('should return the selector for Android when "._android()" is called', function () {
+            expect(selector._android()).toBe(`.text("${VALUE}")`);
         });
 
-        it('should return the selector for iOS when ".ios()" is called', function () {
-            expect(selector.ios()).toBe(`label == '${VALUE}'`);
+        it('should return the selector for iOS when "._ios()" is called', function () {
+            expect(selector._ios()).toBe(`label == '${VALUE}'`);
         });
     });
     describe('textContains', function () {
         const selector = Selector.textContains(VALUE);
 
-        it('should return the selector for Android when ".android()" is called', function () {
-            expect(selector.android()).toBe(`.textContains("${VALUE}")`);
+        it('should return the selector for Android when "._android()" is called', function () {
+            expect(selector._android()).toBe(`.textContains("${VALUE}")`);
         });
 
-        it('should return the selector for iOS when ".ios()" is called', function () {
-            expect(selector.ios()).toBe(`label CONTAINS '${VALUE}'`);
+        it('should return the selector for iOS when "._ios()" is called', function () {
+            expect(selector._ios()).toBe(`label CONTAINS '${VALUE}'`);
         });
     });
     describe('textMatches', function () {
         const selector = Selector.textMatches(VALUE);
 
-        it('should return the selector for Android when ".android()" is called', function () {
-            expect(selector.android()).toBe(`.textMatches("${VALUE}")`);
+        it('should return the selector for Android when "._android()" is called', function () {
+            expect(selector._android()).toBe(`.textMatches("${VALUE}")`);
         });
 
-        it('should return the selector for iOS when ".ios()" is called', function () {
-            expect(selector.ios()).toBe(`label MATCHES '${VALUE}'`);
+        it('should return the selector for iOS when "._ios()" is called', function () {
+            expect(selector._ios()).toBe(`label MATCHES '${VALUE}'`);
         });
     });
     describe('textStartsWith', function () {
         const selector = Selector.textStartsWith(VALUE);
 
-        it('should return the selector for Android when ".android()" is called', function () {
-            expect(selector.android()).toBe(`.textStartsWith("${VALUE}")`);
+        it('should return the selector for Android when "._android()" is called', function () {
+            expect(selector._android()).toBe(`.textStartsWith("${VALUE}")`);
         });
 
-        it('should return the selector for iOS when ".ios()" is called', function () {
-            expect(selector.ios()).toBe(`label BEGINSWITH '${VALUE}'`);
+        it('should return the selector for iOS when "._ios()" is called', function () {
+            expect(selector._ios()).toBe(`label BEGINSWITH '${VALUE}'`);
         });
     });
 
     describe('accessibilityId', function () {
         const selector = Selector.accessibilityId(VALUE);
 
-        it('should return the selector for Android when ".android()" is called', function () {
-            expect(selector.android()).toBe(`.description("${VALUE}")`);
+        it('should return the selector for Android when "._android()" is called', function () {
+            expect(selector._android()).toBe(`.description("${VALUE}")`);
         });
 
-        it('should return the selector for iOS when ".ios()" is called', function () {
-            expect(selector.ios()).toBe(`name == '${VALUE}'`);
+        it('should return the selector for iOS when "._ios()" is called', function () {
+            expect(selector._ios()).toBe(`name == '${VALUE}'`);
         });
     });
     describe('accessibilityIdContains', function () {
         const selector = Selector.accessibilityIdContains(VALUE);
 
-        it('should return the selector for Android when ".android()" is called', function () {
-            expect(selector.android()).toBe(`.descriptionContains("${VALUE}")`);
+        it('should return the selector for Android when "._android()" is called', function () {
+            expect(selector._android()).toBe(
+                `.descriptionContains("${VALUE}")`
+            );
         });
 
-        it('should return the selector for iOS when ".ios()" is called', function () {
-            expect(selector.ios()).toBe(`name CONTAINS '${VALUE}'`);
+        it('should return the selector for iOS when "._ios()" is called', function () {
+            expect(selector._ios()).toBe(`name CONTAINS '${VALUE}'`);
         });
     });
     describe('accessibilityIdMatches', function () {
         const selector = Selector.accessibilityIdMatches(VALUE);
 
-        it('should return the selector for Android when ".android()" is called', function () {
-            expect(selector.android()).toBe(`.descriptionMatches("${VALUE}")`);
+        it('should return the selector for Android when "._android()" is called', function () {
+            expect(selector._android()).toBe(`.descriptionMatches("${VALUE}")`);
         });
 
-        it('should return the selector for iOS when ".ios()" is called', function () {
-            expect(selector.ios()).toBe(`name MATCHES '${VALUE}'`);
+        it('should return the selector for iOS when "._ios()" is called', function () {
+            expect(selector._ios()).toBe(`name MATCHES '${VALUE}'`);
         });
     });
     describe('accessibilityIdStartsWith', function () {
         const selector = Selector.accessibilityIdStartsWith(VALUE);
 
-        it('should return the selector for Android when ".android()" is called', function () {
-            expect(selector.android()).toBe(
+        it('should return the selector for Android when "._android()" is called', function () {
+            expect(selector._android()).toBe(
                 `.descriptionStartsWith("${VALUE}")`
             );
         });
 
-        it('should return the selector for iOS when ".ios()" is called', function () {
-            expect(selector.ios()).toBe(`name BEGINSWITH '${VALUE}'`);
+        it('should return the selector for iOS when "._ios()" is called', function () {
+            expect(selector._ios()).toBe(`name BEGINSWITH '${VALUE}'`);
         });
     });
 
     describe('enabled', function () {
         const selector = Selector.enabled();
 
-        it('should return the selector for Android when ".android()" is called', function () {
-            expect(selector.android()).toBe('.enabled(true)');
+        it('should return the selector for Android when "._android()" is called', function () {
+            expect(selector._android()).toBe('.enabled(true)');
         });
 
-        it('should return the selector for iOS when ".ios()" is called', function () {
-            expect(selector.ios()).toBe('enabled == 1');
+        it('should return the selector for iOS when "._ios()" is called', function () {
+            expect(selector._ios()).toBe('enabled == 1');
         });
     });
     describe('disabled', function () {
         const selector = Selector.disabled();
 
-        it('should return the selector for Android when ".android()" is called', function () {
-            expect(selector.android()).toBe('.enabled(false)');
+        it('should return the selector for Android when "._android()" is called', function () {
+            expect(selector._android()).toBe('.enabled(false)');
         });
 
-        it('should return the selector for iOS when ".ios()" is called', function () {
-            expect(selector.ios()).toBe('enabled == 0');
+        it('should return the selector for iOS when "._ios()" is called', function () {
+            expect(selector._ios()).toBe('enabled == 0');
         });
     });
 

@@ -40,16 +40,16 @@ export class Selector {
         let andAndroid: string | null = null;
         let andIos: string | null = null;
 
-        const selector1Android = selector1.android();
-        const selector2Android = selector2.android();
+        const selector1Android = selector1._android();
+        const selector2Android = selector2._android();
         if (selector1Android != null && selector2Android != null) {
             andAndroid = this.combineAndAndroid(selector1, selector2);
         }
 
-        const selector1Ios = selector1.ios();
-        const selector2Ios = selector2.ios();
+        const selector1Ios = selector1._ios();
+        const selector2Ios = selector2._ios();
         if (selector1Ios != null && selector2Ios != null) {
-            andIos = '(' + selector1.ios() + ' && ' + selector2.ios() + ')';
+            andIos = '(' + selector1._ios() + ' && ' + selector2._ios() + ')';
         }
 
         if (!andAndroid && !andIos) {
@@ -64,8 +64,8 @@ export class Selector {
         selector2: Selector
     ): string {
         // method is only called if selector1 and selector2 are not null
-        const selector1Android = selector1.android() as string;
-        const selector2Android = selector2.android() as string;
+        const selector1Android = selector1._android() as string;
+        const selector2Android = selector2._android() as string;
 
         const splitOr = ';new UiSelector()';
         const split1 = selector1Android.split(splitOr);
@@ -137,8 +137,8 @@ export class Selector {
         let orAndroid: string | null = null;
         let orIos: string | null = null;
 
-        const selector1Android = selector1.android();
-        const selector2Android = selector2.android();
+        const selector1Android = selector1._android();
+        const selector2Android = selector2._android();
         if (selector1Android != null && selector2Android != null) {
             orAndroid = this.combineOrAndroid(
                 selector1Android,
@@ -146,8 +146,8 @@ export class Selector {
             );
         }
 
-        const selector1Ios = selector1.ios();
-        const selector2Ios = selector2.ios();
+        const selector1Ios = selector1._ios();
+        const selector2Ios = selector2._ios();
         if (selector1Ios != null && selector2Ios != null) {
             orIos = '(' + selector1Ios + ' || ' + selector2Ios + ')';
         }
@@ -349,11 +349,23 @@ export class Selector {
         return new Selector(androidSelector, iosSelector);
     }
 
-    public android(): string | null {
+    /**
+     * @return the {@code UiSelector} of this {@link Selector} or {@code null},
+     *  if no {@link AndroidSelector} was specified.
+     * @private
+     * @internal
+     */
+    _android(): string | null {
         return this.androidSelector;
     }
 
-    public ios(): string | null {
+    /**
+     * @return the {@code ios predicate} of this {@link Selector} or {@code null},
+     *  if no {@link IosSelector} was specified.
+     * @private
+     * @internal
+     */
+    _ios(): string | null {
         return this.iosSelector;
     }
 }
