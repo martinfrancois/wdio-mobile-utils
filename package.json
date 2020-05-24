@@ -76,7 +76,7 @@
     "standard-version": "8.0.0",
     "trash-cli": "3.0.0",
     "ts-jest": "25.5.1",
-    "typedoc": "0.17.6",
+    "typedoc": "0.17.7",
     "typescript": "3.8.3",
     "webdriverio": "6.1.12"
   },
