@@ -79,13 +79,96 @@
 				</a>
 				<p>Releases for WebdriverIO v5 are released on the <code>v5</code> branch, while releases for WebdriverIO v6 are releases on the <code>master</code> branch.</p>
 				<p>Check the <a href="https://github.com/martinfrancois/wdio-mobile-utils/releases">releases here</a>, the releases for WebdriverIO v6 are prefixed with <code>6-</code>, while releases for WebdriverIO v5 are prefixed with <code>5-</code>.</p>
-				<pre><code><span class="hljs-attribute">npm</span> install -D wdio-mobile-utils@<span class="hljs-number">7</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>          # WebdriverIO v<span class="hljs-number">6</span>
-<span class="hljs-attribute">npm</span> install -D wdio-mobile-utils@<span class="hljs-number">6</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>          # WebdriverIO v<span class="hljs-number">5</span></code></pre>
+				<pre><code><span class="hljs-attribute">npm</span> install -D wdio-mobile-utils@<span class="hljs-number">8</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>          # WebdriverIO v<span class="hljs-number">6</span>
+<span class="hljs-attribute">npm</span> install -D wdio-mobile-utils@<span class="hljs-number">7</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>          # WebdriverIO v<span class="hljs-number">5</span></code></pre>
+				<a href="#table-of-contents" id="table-of-contents" style="color: inherit; text-decoration: none;">
+					<h2>Table of Contents</h2>
+				</a>
+				<ul>
+					<li><a href="#tsdoc">TSDoc</a></li>
+					<li><a href="#mobile-selectors">Mobile Selectors</a><ul>
+							<li><a href="#combining-selectors">Combining selectors</a></li>
+							<li><a href="#custom-selectors">Custom Selectors</a></li>
+						</ul>
+					</li>
+					<li><a href="#usage-in-action">Usage in Action</a></li>
+				</ul>
 				<a href="#tsdoc" id="tsdoc" style="color: inherit; text-decoration: none;">
 					<h2>TSDoc</h2>
 				</a>
 				<p>You can find documentation for the individual methods here:
 				<a href="https://martinfrancois.github.io/wdio-mobile-utils/">https://martinfrancois.github.io/wdio-mobile-utils/</a></p>
+				<a href="#mobile-selectors" id="mobile-selectors" style="color: inherit; text-decoration: none;">
+					<h2>Mobile Selectors</h2>
+				</a>
+				<p>In cases where you cannot use <code>accessibilityId</code>s, it is recommended to use <code>ios predicate</code> for iOS and <code>UiSelector</code> for Android.
+					wdio-mobile-utils provides an abstraction to build mobile selectors easily which are cross-platform.
+				This means you can build your selectors using <code>mobile$</code> and <code>mobile$$</code> and wdio-mobile-utils will automatically convert this into an <code>ios predicate</code> for iOS and <code>UiSelector</code> for Android for you automatically, depending on which platform the test is running on.</p>
+				<p>To select <strong>one element</strong>, use <code>mobile$</code>, which is the equivalent to <code>$</code> in WebdriverIO.
+				To select <strong>all elements</strong> use <code>mobile$$</code>, which is the equivalent to <code>$$</code> in WebdriverIO.</p>
+				<p>You can find all of the different <code>Selector</code>s you can use in the <a href="https://martinfrancois.github.io/wdio-mobile-utils/classes/selector.html">TSDoc for Selector</a>.</p>
+				<p>For example, to select a <strong>button</strong> which works on <strong>both Android and iOS</strong>, we can use the following selector with wdio-mobile-utils:</p>
+				<pre><code class="language-javascript">mobile$(Selector.type(Type.BUTTON));</code></pre>
+				<p>Internally, it will convert this into the following <code>ios predicate</code> and <code>UiSelector</code> selectors, depending on the platform the test is running on:</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// UiSelector</span>
+$(<span class="hljs-string">'android=new UiSelector().className("android.widget.Button")'</span>);
+
+<span class="hljs-comment">// ios predicate</span>
+$(<span class="hljs-string">"-ios predicate string:type == 'XCUIElementTypeButton'"</span>);</code></pre>
+				<a href="#combining-selectors" id="combining-selectors" style="color: inherit; text-decoration: none;">
+					<h3>Combining selectors</h3>
+				</a>
+				<p>You can also use multiple selectors together, combining them either with an <code>AND</code> (<code>&amp;&amp;</code>) or an <code>OR</code> (<code>||</code>) condition:</p>
+				<pre><code class="language-javascript">Selectors.and(selector1, selector2); <span class="hljs-comment">// AND (&amp;&amp;) condition</span>
+Selectors.or(selector1, selector2); <span class="hljs-comment">// OR (||) condition</span></code></pre>
+				<p>For example, to select a <strong>button</strong> with the text <code>Login</code> which works on <strong>both Android and iOS</strong>, we can use the following selector with wdio-mobile-utils:</p>
+				<!-- prettier-ignore-start -->
+				<pre><code class="language-javascript"><span class="hljs-comment">// compact form</span>
+mobile$(Selector.and(Selector.type(Type.BUTTON), Selector.text(<span class="hljs-string">'Login'</span>)));
+
+<span class="hljs-comment">// long form</span>
+mobile$(
+    Selector.and(
+       Selector.type(Type.BUTTON),
+       Selector.text(<span class="hljs-string">'Login'</span>)
+    )
+);</code></pre>
+				<!-- prettier-ignore-end -->
+				<p>Internally, it will convert this into the following <code>ios predicate</code> and <code>UiSelector</code> selectors, depending on the platform the test is running on:</p>
+				<pre><code class="language-javascript"><span class="hljs-comment">// UiSelector</span>
+$(<span class="hljs-string">'android=new UiSelector().className("android.widget.Button").text("Login")'</span>);
+
+<span class="hljs-comment">// ios predicate</span>
+$(<span class="hljs-string">"-ios predicate string:type == 'XCUIElementTypeButton' &amp;&amp; label == 'Login'"</span>);</code></pre>
+				<a href="#custom-selectors" id="custom-selectors" style="color: inherit; text-decoration: none;">
+					<h3>Custom Selectors</h3>
+				</a>
+				<p>If you can&#39;t find a selector you&#39;re looking for, if it&#39;s generic enough to be useful for others, consider contributing with a <a href="https://github.com/martinfrancois/wdio-mobile-utils/pulls">PR here</a>.</p>
+				<p>If you need to use a very specific selector or one that may only work on one platform and you still want to make use of the easy fluent API of wdio-mobile-utils, you can use a custom selector.</p>
+				<p>For example:</p>
+				<!-- prettier-ignore-start -->
+				<pre><code class="language-javascript">mobile$(
+    Selector.custom(
+        AndroidSelector.of(ANDROID_UISELECTOR_PROPERTIES.RESOURCE_ID, <span class="hljs-string">'URL'</span>),
+        IosSelector.of(IOS_PREDICATE_ATTRIBUTES.VALUE, IOS_PREDICATE_COMPARATOR.EQUALS, <span class="hljs-string">'URL'</span>)
+    )
+);</code></pre>
+				<!-- prettier-ignore-end -->
+				<p>To create a selector which only works on one platform, set one of the selectors to <code>null</code>, like so:</p>
+				<!-- prettier-ignore-start -->
+				<pre><code class="language-javascript">mobile$(
+    Selector.custom(
+        <span class="hljs-literal">null</span>, <span class="hljs-comment">// no selector on Android</span>
+        IosSelector.of(IOS_PREDICATE_ATTRIBUTES.RECT, IOS_PREDICATE_COMPARATOR.EQUALS, <span class="hljs-string">'URL'</span>)
+    )
+);</code></pre>
+				<!-- prettier-ignore-end -->
+				<p>Note that when creating a selector which only works on one platform (for example, only for iOS), if a test is executed on the other platform (for example, Android), it will throw an error.
+				This also applies in cases where a selector which only works on one platform is combined with a cross-platform selector, which is used on the other platform.</p>
+				<a href="#usage-in-action" id="usage-in-action" style="color: inherit; text-decoration: none;">
+					<h2>Usage in Action</h2>
+				</a>
+				<p>Check out the <a href="http://saucecon.com/agenda-2020?agendaPath=session/251027">recording</a> and the <a href="https://github.com/martinfrancois/saucecon-2020-1-codebase-2-mobile-platforms/blob/master/SauceCon_2020_Online.pdf">slides</a> of my presentation at SauceCon Online 2020 for detailed information on how to use the library.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -290,6 +373,7 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
