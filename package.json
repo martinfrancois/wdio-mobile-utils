@@ -56,7 +56,7 @@
     "@types/jest": "25.2.3",
     "@types/node": "10.17.24",
     "@typescript-eslint/eslint-plugin": "2.32.0",
-    "@typescript-eslint/parser": "2.32.0",
+    "@typescript-eslint/parser": "4.0.1",
     "@wdio/logger": "5.16.10",
     "@wdio/sync": "5.20.1",
     "codecov": "3.7.0",
