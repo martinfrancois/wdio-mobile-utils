@@ -75,7 +75,7 @@
     "pretty-quick": "2.0.1",
     "standard-version": "8.0.0",
     "trash-cli": "3.0.0",
-    "ts-jest": "26.0.0",
+    "ts-jest": "26.4.2",
     "typedoc": "0.17.7",
     "typescript": "3.9.3",
     "webdriverio": "6.1.12"
