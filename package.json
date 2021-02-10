@@ -57,7 +57,7 @@
     "@types/node": "10.17.24",
     "@typescript-eslint/eslint-plugin": "2.32.0",
     "@typescript-eslint/parser": "2.32.0",
-    "@wdio/logger": "6.0.16",
+    "@wdio/logger": "7.0.0",
     "@wdio/sync": "6.1.8",
     "codecov": "3.7.0",
     "cz-conventional-changelog": "3.2.0",
