@@ -78,7 +78,7 @@
     "ts-jest": "26.0.0",
     "typedoc": "0.17.7",
     "typescript": "3.9.3",
-    "webdriverio": "5.23.0"
+    "webdriverio": "7.0.9"
   },
   "config": {
     "commitizen": {
