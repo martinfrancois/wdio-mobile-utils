@@ -54,7 +54,7 @@
   "dependencies": {},
   "devDependencies": {
     "@types/jest": "25.2.3",
-    "@types/node": "10.17.24",
+    "@types/node": "15.3.0",
     "@typescript-eslint/eslint-plugin": "2.32.0",
     "@typescript-eslint/parser": "2.32.0",
     "@wdio/logger": "5.16.10",
